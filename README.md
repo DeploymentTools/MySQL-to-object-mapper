@@ -1,1 +1,1 @@
-# mysql-schema-graph
+Scans MySQL structure and converts it into PHP objects. Check demo/index.php for usage. Will provide a `phar` file at release date.
