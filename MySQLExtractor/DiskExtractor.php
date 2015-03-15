@@ -50,6 +50,9 @@ class DiskExtractor
 
             $rawExtracted = $this->extractTables($value);
             $this->databases[$databaseName]->Tables = array_merge($this->databases[$databaseName]->Tables, $rawExtracted);
+            if (count($this->databases[$databaseName]->Tables) == 0) {
+                unset($this->databases[$databaseName]);
+            }
         }
     }
 
@@ -169,27 +172,22 @@ class DiskExtractor
 
             preg_match('/^`([\w]+)`\s([\w]+)\(?([0-9]+)?\)?/', $field_string, $matches_type);
             if ($matches_type) {
-                $field->Type = $matches_type[2];
+                $field->Type = strtoupper($matches_type[2]);
                 if (isset($matches_type[3]) && !empty($matches_type[3])) {
                     $field->Length = $matches_type[3];
                 }
             }
 
-            preg_match('/DEFAULT\s\'(.*)\'/i', $field_string, $matches_default);
+            preg_match('/DEFAULT\s\'(.*)\'/', $field_string, $matches_default);
             if ($matches_default) {
-                $field->Default = $matches_default[1];
+                $field->Default = empty($matches_default[1]) ? "" : $matches_default[1];
             }
 
             if (strpos(strtoupper($field_string), 'AUTO_INCREMENT')) {
                 $field->Autoincrement = true;
             }
 
-            if (strpos(strtoupper($field_string), 'NOT NULL')) {
-                $field->Null = false;
-            } else if (strpos(strtoupper($field_string), 'NULL')) {
-                $field->Null = true;
-            }
-
+            $field->Null = !(strpos(strtoupper($field_string), 'NOT NULL') > 0);
             // $field->Raw = $field_string;
             return $field;
         }
@@ -200,10 +198,9 @@ class DiskExtractor
     private function extract_table($contents)
     {
         $table = new Table;
-
-        preg_match('/CREATE\sTABLE\s`?([\w]+)`?/', $contents, $matches);
+        preg_match('/CREATE\sTABLE\s(IF NOT EXISTS)?\s?`?([\w]+)`?/', $contents, $matches);
         if ($matches) {
-            $table->Name = $matches[1];
+            $table->Name = $matches[2];
 
             $listen = false;
             $paranthesis_level = 0;
@@ -312,7 +309,7 @@ class DiskExtractor
         }
     }
 
-    public function results()
+    public function databases()
     {
         return $this->databases;
     }

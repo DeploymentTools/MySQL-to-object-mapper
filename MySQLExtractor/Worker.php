@@ -17,14 +17,18 @@ class Worker
             throw new exceptions\InvalidPathException($path);
         }
 
-        $results = $this->results();
-        foreach ($results as $database) {
+        foreach ($this->extractor->databases() as $database) {
             file_put_contents($path . DIRECTORY_SEPARATOR . $database->Name . '.json', json_encode($database, JSON_PRETTY_PRINT));
         }
     }
 
-    public function results()
+    public function statistics()
     {
-        return $this->extractor->results();
+        $databases = $this->extractor->databases();
+        $results = array();
+        foreach ($databases as $database) {
+            $results[] = "- database [" . $database->Name . "] with [" . count($database->Tables) . "] tables.";
+        }
+        return $results;
     }
 }
