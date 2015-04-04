@@ -3,12 +3,10 @@ php:
   - "5.4"
 
 before_script:
-  - wget http://getcomposer.org/composer.phar
-  - php composer.phar install --dev --no-interaction
+  - composer install --dev --no-interaction
+  - mkdir -p build/logs
 
 script:
-  - composer install
-  - mkdir -p build/logs
   - phpunit -v -c phpunit.xml --coverage-clover build/logs/clover.xml
 
 after_script:

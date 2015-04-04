@@ -23,6 +23,6 @@
         </whitelist>
     </filter>
     <php>
-        <const name="TESTING" value="0" />
+        <const name="TESTING" value="" />
     </php>
 </phpunit>

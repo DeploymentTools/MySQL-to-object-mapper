@@ -10,13 +10,15 @@ class System
     protected static $mock;
 
     /**
+     * Calls the internal method if the TESTING const is not defined or the mock is not set.
+     *
      * @param $methodName
      * @param array $args
      * @return mixed
      */
     public static function __callStatic($methodName, $args = array())
     {
-        if (defined('TESTING')) {
+        if (defined('TESTING') && !is_null(self::$mock)) {
             return call_user_func_array(array(self::$mock, $methodName), $args);
         }
         return call_user_func_array($methodName, $args);

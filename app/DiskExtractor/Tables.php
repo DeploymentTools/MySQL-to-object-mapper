@@ -36,6 +36,7 @@ class Tables
     public function from($stringContents)
     {
         $this->reset();
+        $this->tables = new Collection();
         $this->tableContentsLines = explode("\n", $stringContents . "\n;");
         return $this;
     }
@@ -136,7 +137,6 @@ class Tables
 
     protected function reset()
     {
-        $this->tables = new Collection();
         $this->tableContentsLines = null;
         $this->elementFragments = array();
         $this->parenthesisLevel = 0;
