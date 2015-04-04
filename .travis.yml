@@ -4,7 +4,7 @@ php:
 
 script:
   - composer install
-  - phpunit
+  - phpunit -v -c phpunit.xml
 
 notifications:
   email: false

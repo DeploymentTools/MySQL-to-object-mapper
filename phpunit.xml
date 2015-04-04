@@ -4,6 +4,7 @@
         backupGlobals="false"
         backupStaticAttributes="false"
         colors="true"
+        strict="true"
         >
     <testsuites>
         <testsuite name="all">

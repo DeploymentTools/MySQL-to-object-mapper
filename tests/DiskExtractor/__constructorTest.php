@@ -17,7 +17,7 @@ class __constructor extends \PHPUnit_Framework_TestCase
         $path = '/projects/MySQL-to-object-mapper/demo/output/';
 
         $systemHelper = new System();
-        $systemMock = \Mockery::mock('\\MySQLExtractor\\System')->makePartial();
+        $systemMock = \Mockery::mock('\\MySQLExtractor\\SystemMock')->makePartial();
         $systemMock->shouldReceive('file_exists')->with($path)->andReturn(true);
         $systemMock->shouldReceive('is_dir')->with($path)->andReturn(true);
 
@@ -40,7 +40,7 @@ class __constructor extends \PHPUnit_Framework_TestCase
         $path = '/projects/MySQL-to-object-mapper/demo/output/';
 
         $systemHelper = new System();
-        $systemMock = \Mockery::mock('\\MySQLExtractor\\System')->makePartial();
+        $systemMock = \Mockery::mock('\\MySQLExtractor\\SystemMock')->makePartial();
         $systemMock->shouldReceive('file_exists')->with($path)->andReturn(false);
 
         $refObject = new \ReflectionObject($systemHelper);
