@@ -2,9 +2,17 @@ language: php
 php:
   - "5.4"
 
+before_script:
+  - wget http://getcomposer.org/composer.phar
+  - php composer.phar install --dev --no-interaction
+
 script:
   - composer install
-  - phpunit -v -c phpunit.xml
+  - mkdir -p build/logs
+  - phpunit -v -c phpunit.xml --coverage-clover build/logs/clover.xml
+
+after_script:
+  - php vendor/bin/coveralls -v
 
 notifications:
   email: false
