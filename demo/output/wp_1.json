@@ -1,0 +1,1065 @@
+{
+    "Name": "wp_1",
+    "Tables": [
+        {
+            "Name": "wp_commentmeta",
+            "Fields": [
+                {
+                    "Id": "meta_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": true
+                },
+                {
+                    "Id": "comment_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "meta_key",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "meta_value",
+                    "Type": "LONGTEXT",
+                    "Length": null,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "meta_id"
+                },
+                {
+                    "Label": "comment_id",
+                    "Columns": [
+                        "comment_id"
+                    ]
+                },
+                {
+                    "Label": "meta_key",
+                    "Columns": [
+                        "meta_key"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "wp_comments",
+            "Fields": [
+                {
+                    "Id": "comment_ID",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": true
+                },
+                {
+                    "Id": "comment_post_ID",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_author",
+                    "Type": "TINYTEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_author_email",
+                    "Type": "VARCHAR",
+                    "Length": "100",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_author_url",
+                    "Type": "VARCHAR",
+                    "Length": "200",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_author_IP",
+                    "Type": "VARCHAR",
+                    "Length": "100",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_date",
+                    "Type": "DATETIME",
+                    "Length": null,
+                    "Null": false,
+                    "Default": "0000-00-00 00:00:00",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_date_gmt",
+                    "Type": "DATETIME",
+                    "Length": null,
+                    "Null": false,
+                    "Default": "0000-00-00 00:00:00",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_content",
+                    "Type": "TEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_karma",
+                    "Type": "INT",
+                    "Length": "11",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_approved",
+                    "Type": "VARCHAR",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "1",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_agent",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_type",
+                    "Type": "VARCHAR",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_parent",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "user_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "comment_ID"
+                },
+                {
+                    "Label": "comment_post_ID",
+                    "Columns": [
+                        "comment_post_ID"
+                    ]
+                },
+                {
+                    "Label": "comment_approved_date_gmt",
+                    "Columns": [
+                        "comment_approved",
+                        "comment_date_gmt"
+                    ]
+                },
+                {
+                    "Label": "comment_date_gmt",
+                    "Columns": [
+                        "comment_date_gmt"
+                    ]
+                },
+                {
+                    "Label": "comment_parent",
+                    "Columns": [
+                        "comment_parent"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "wp_links",
+            "Fields": [
+                {
+                    "Id": "link_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": true
+                },
+                {
+                    "Id": "link_url",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_name",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_image",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_target",
+                    "Type": "VARCHAR",
+                    "Length": "25",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_description",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_visible",
+                    "Type": "VARCHAR",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "Y",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_owner",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "1",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_rating",
+                    "Type": "INT",
+                    "Length": "11",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_updated",
+                    "Type": "DATETIME",
+                    "Length": null,
+                    "Null": false,
+                    "Default": "0000-00-00 00:00:00",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_rel",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_notes",
+                    "Type": "MEDIUMTEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "link_rss",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "link_id"
+                },
+                {
+                    "Label": "link_visible",
+                    "Columns": [
+                        "link_visible"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "wp_options",
+            "Fields": [
+                {
+                    "Id": "option_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": true
+                },
+                {
+                    "Id": "option_name",
+                    "Type": "VARCHAR",
+                    "Length": "64",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "option_value",
+                    "Type": "LONGTEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "autoload",
+                    "Type": "VARCHAR",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "yes",
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "option_id"
+                },
+                {
+                    "Label": "option_name",
+                    "Columns": [
+                        "option_name"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "wp_postmeta",
+            "Fields": [
+                {
+                    "Id": "meta_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": true
+                },
+                {
+                    "Id": "post_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "meta_key",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "meta_value",
+                    "Type": "LONGTEXT",
+                    "Length": null,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "meta_id"
+                },
+                {
+                    "Label": "post_id",
+                    "Columns": [
+                        "post_id"
+                    ]
+                },
+                {
+                    "Label": "meta_key",
+                    "Columns": [
+                        "meta_key"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "wp_posts",
+            "Fields": [
+                {
+                    "Id": "ID",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": true
+                },
+                {
+                    "Id": "post_author",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_date",
+                    "Type": "DATETIME",
+                    "Length": null,
+                    "Null": false,
+                    "Default": "0000-00-00 00:00:00",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_date_gmt",
+                    "Type": "DATETIME",
+                    "Length": null,
+                    "Null": false,
+                    "Default": "0000-00-00 00:00:00",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_content",
+                    "Type": "LONGTEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_title",
+                    "Type": "TEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_excerpt",
+                    "Type": "TEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_status",
+                    "Type": "VARCHAR",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "publish",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_status",
+                    "Type": "VARCHAR",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "open",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "ping_status",
+                    "Type": "VARCHAR",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "open",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_password",
+                    "Type": "VARCHAR",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_name",
+                    "Type": "VARCHAR",
+                    "Length": "200",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "to_ping",
+                    "Type": "TEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "pinged",
+                    "Type": "TEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_modified",
+                    "Type": "DATETIME",
+                    "Length": null,
+                    "Null": false,
+                    "Default": "0000-00-00 00:00:00",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_modified_gmt",
+                    "Type": "DATETIME",
+                    "Length": null,
+                    "Null": false,
+                    "Default": "0000-00-00 00:00:00",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_content_filtered",
+                    "Type": "LONGTEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_parent",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "guid",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "menu_order",
+                    "Type": "INT",
+                    "Length": "11",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_type",
+                    "Type": "VARCHAR",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "post",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "post_mime_type",
+                    "Type": "VARCHAR",
+                    "Length": "100",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "comment_count",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "ID"
+                },
+                {
+                    "Label": "post_name",
+                    "Columns": [
+                        "post_name"
+                    ]
+                },
+                {
+                    "Label": "type_status_date",
+                    "Columns": [
+                        "post_type",
+                        "post_status",
+                        "post_date",
+                        "ID"
+                    ]
+                },
+                {
+                    "Label": "post_parent",
+                    "Columns": [
+                        "post_parent"
+                    ]
+                },
+                {
+                    "Label": "post_author",
+                    "Columns": [
+                        "post_author"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "wp_term_relationships",
+            "Fields": [
+                {
+                    "Id": "object_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "term_taxonomy_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "term_order",
+                    "Type": "INT",
+                    "Length": "11",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Label": "term_taxonomy_id",
+                    "Columns": [
+                        "term_taxonomy_id"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "wp_term_taxonomy",
+            "Fields": [
+                {
+                    "Id": "term_taxonomy_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": true
+                },
+                {
+                    "Id": "term_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "taxonomy",
+                    "Type": "VARCHAR",
+                    "Length": "32",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "description",
+                    "Type": "LONGTEXT",
+                    "Length": null,
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "parent",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "count",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "term_taxonomy_id"
+                },
+                {
+                    "Label": "term_id_taxonomy",
+                    "Columns": [
+                        "term_id",
+                        "taxonomy"
+                    ]
+                },
+                {
+                    "Label": "taxonomy",
+                    "Columns": [
+                        "taxonomy"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "wp_terms",
+            "Fields": [
+                {
+                    "Id": "term_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": true
+                },
+                {
+                    "Id": "name",
+                    "Type": "VARCHAR",
+                    "Length": "200",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "slug",
+                    "Type": "VARCHAR",
+                    "Length": "200",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "term_group",
+                    "Type": "BIGINT",
+                    "Length": "10",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "term_id"
+                },
+                {
+                    "Label": "slug",
+                    "Columns": [
+                        "slug"
+                    ]
+                },
+                {
+                    "Label": "name",
+                    "Columns": [
+                        "name"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "wp_usermeta",
+            "Fields": [
+                {
+                    "Id": "umeta_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": true
+                },
+                {
+                    "Id": "user_id",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "meta_key",
+                    "Type": "VARCHAR",
+                    "Length": "255",
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "meta_value",
+                    "Type": "LONGTEXT",
+                    "Length": null,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "umeta_id"
+                },
+                {
+                    "Label": "user_id",
+                    "Columns": [
+                        "user_id"
+                    ]
+                },
+                {
+                    "Label": "meta_key",
+                    "Columns": [
+                        "meta_key"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "wp_users",
+            "Fields": [
+                {
+                    "Id": "ID",
+                    "Type": "BIGINT",
+                    "Length": "20",
+                    "Null": false,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": true
+                },
+                {
+                    "Id": "user_login",
+                    "Type": "VARCHAR",
+                    "Length": "60",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "user_pass",
+                    "Type": "VARCHAR",
+                    "Length": "64",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "user_nicename",
+                    "Type": "VARCHAR",
+                    "Length": "50",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "user_email",
+                    "Type": "VARCHAR",
+                    "Length": "100",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "user_url",
+                    "Type": "VARCHAR",
+                    "Length": "100",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "user_registered",
+                    "Type": "DATETIME",
+                    "Length": null,
+                    "Null": false,
+                    "Default": "0000-00-00 00:00:00",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "user_activation_key",
+                    "Type": "VARCHAR",
+                    "Length": "60",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "user_status",
+                    "Type": "INT",
+                    "Length": "11",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                },
+                {
+                    "Id": "display_name",
+                    "Type": "VARCHAR",
+                    "Length": "250",
+                    "Null": false,
+                    "Default": "",
+                    "Comment": null,
+                    "Autoincrement": false
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "ID"
+                },
+                {
+                    "Label": "user_login_key",
+                    "Columns": [
+                        "user_login"
+                    ]
+                },
+                {
+                    "Label": "user_nicename",
+                    "Columns": [
+                        "user_nicename"
+                    ]
+                }
+            ]
+        }
+    ]
+}

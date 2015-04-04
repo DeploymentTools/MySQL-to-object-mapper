@@ -7,6 +7,6 @@ class Field {
     public $Length;
     public $Null;
     public $Default;
+    public $Comment;
     public $Autoincrement = false;
-    // public $Raw;
 }
