@@ -7,7 +7,7 @@
                 {
                     "Id": "id",
                     "Type": "INT",
-                    "Length": "11",
+                    "Length": 11,
                     "Null": false,
                     "Default": null,
                     "Comment": null,
@@ -16,7 +16,7 @@
                 {
                     "Id": "nume",
                     "Type": "VARCHAR",
-                    "Length": "255",
+                    "Length": 255,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -25,7 +25,7 @@
                 {
                     "Id": "url",
                     "Type": "VARCHAR",
-                    "Length": "100",
+                    "Length": 100,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -34,7 +34,7 @@
                 {
                     "Id": "domeniu",
                     "Type": "VARCHAR",
-                    "Length": "100",
+                    "Length": 100,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -43,7 +43,7 @@
                 {
                     "Id": "email",
                     "Type": "VARCHAR",
-                    "Length": "255",
+                    "Length": 255,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -52,7 +52,7 @@
                 {
                     "Id": "telefon",
                     "Type": "VARCHAR",
-                    "Length": "100",
+                    "Length": 100,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -61,7 +61,7 @@
                 {
                     "Id": "judet",
                     "Type": "VARCHAR",
-                    "Length": "100",
+                    "Length": 100,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -70,7 +70,7 @@
                 {
                     "Id": "localitate",
                     "Type": "VARCHAR",
-                    "Length": "100",
+                    "Length": 100,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -79,7 +79,7 @@
                 {
                     "Id": "strada",
                     "Type": "VARCHAR",
-                    "Length": "255",
+                    "Length": 255,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -88,7 +88,7 @@
                 {
                     "Id": "nr",
                     "Type": "VARCHAR",
-                    "Length": "20",
+                    "Length": 20,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -97,7 +97,7 @@
                 {
                     "Id": "reprezentant",
                     "Type": "VARCHAR",
-                    "Length": "255",
+                    "Length": 255,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -106,7 +106,7 @@
                 {
                     "Id": "username",
                     "Type": "VARCHAR",
-                    "Length": "255",
+                    "Length": 255,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -115,7 +115,7 @@
                 {
                     "Id": "parola",
                     "Type": "VARCHAR",
-                    "Length": "60",
+                    "Length": 60,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -152,7 +152,7 @@
                 {
                     "Id": "id",
                     "Type": "INT",
-                    "Length": "11",
+                    "Length": 11,
                     "Null": false,
                     "Default": null,
                     "Comment": null,
@@ -161,7 +161,7 @@
                 {
                     "Id": "companieID",
                     "Type": "INT",
-                    "Length": "11",
+                    "Length": 11,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -170,7 +170,7 @@
                 {
                     "Id": "denumire",
                     "Type": "VARCHAR",
-                    "Length": "255",
+                    "Length": 255,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -179,7 +179,7 @@
                 {
                     "Id": "pozitii",
                     "Type": "INT",
-                    "Length": "3",
+                    "Length": 3,
                     "Null": true,
                     "Default": "1",
                     "Comment": null,
@@ -206,7 +206,7 @@
                 {
                     "Id": "descriere",
                     "Type": "VARCHAR",
-                    "Length": "5000",
+                    "Length": 5000,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -215,7 +215,7 @@
                 {
                     "Id": "profil_scoala_primara",
                     "Type": "INT",
-                    "Length": "1",
+                    "Length": 1,
                     "Null": true,
                     "Default": "",
                     "Comment": null,
@@ -224,7 +224,7 @@
                 {
                     "Id": "profil_scoala_profesionala",
                     "Type": "INT",
-                    "Length": "1",
+                    "Length": 1,
                     "Null": true,
                     "Default": "",
                     "Comment": null,
@@ -233,7 +233,7 @@
                 {
                     "Id": "profil_liceu",
                     "Type": "INT",
-                    "Length": "1",
+                    "Length": 1,
                     "Null": true,
                     "Default": "",
                     "Comment": null,
@@ -242,7 +242,7 @@
                 {
                     "Id": "profil_facultate",
                     "Type": "INT",
-                    "Length": "1",
+                    "Length": 1,
                     "Null": true,
                     "Default": "",
                     "Comment": null,
@@ -251,7 +251,7 @@
                 {
                     "Id": "profil_postuniversitar",
                     "Type": "INT",
-                    "Length": "1",
+                    "Length": 1,
                     "Null": true,
                     "Default": "",
                     "Comment": null,
@@ -260,7 +260,7 @@
                 {
                     "Id": "cerinte",
                     "Type": "VARCHAR",
-                    "Length": "5000",
+                    "Length": 5000,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -269,7 +269,7 @@
                 {
                     "Id": "avangaje_oferite",
                     "Type": "VARCHAR",
-                    "Length": "5000",
+                    "Length": 5000,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -278,7 +278,7 @@
                 {
                     "Id": "persoanacontact_nume",
                     "Type": "VARCHAR",
-                    "Length": "255",
+                    "Length": 255,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -287,7 +287,7 @@
                 {
                     "Id": "persoanacontact_telefon",
                     "Type": "VARCHAR",
-                    "Length": "30",
+                    "Length": 30,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -296,7 +296,7 @@
                 {
                     "Id": "persoanacontact_adresa_localitate",
                     "Type": "VARCHAR",
-                    "Length": "255",
+                    "Length": 255,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -305,7 +305,7 @@
                 {
                     "Id": "persoanacontact_adresa_strada",
                     "Type": "VARCHAR",
-                    "Length": "255",
+                    "Length": 255,
                     "Null": true,
                     "Default": null,
                     "Comment": null,
@@ -314,7 +314,7 @@
                 {
                     "Id": "persoanacontact_adresa_nr",
                     "Type": "VARCHAR",
-                    "Length": "20",
+                    "Length": 20,
                     "Null": true,
                     "Default": null,
                     "Comment": null,

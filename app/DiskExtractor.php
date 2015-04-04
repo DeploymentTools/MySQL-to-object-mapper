@@ -1,10 +1,6 @@
 <?php
 namespace MySQLExtractor;
 use MySQLExtractor\assets\db\Database;
-use MySQLExtractor\assets\db\Table;
-use MySQLExtractor\assets\db\Field;
-use MySQLExtractor\assets\db\Key;
-use MySQLExtractor\assets\db\PrimaryKey;
 
 class DiskExtractor
 {
@@ -16,13 +12,7 @@ class DiskExtractor
         'database_from_file_pattern' => array(
             '/([\w]+)\.([\w]+).sql/',
             '/([\w]+).sql/'
-        ),
-        'tablePattern' => '/CREATE\sTABLE\s(IF NOT EXISTS)?\s?`?([\w]+)`?/',
-        'primaryKeyPattern' => '/PRIMARY\sKEY\s\(`([\w]+)`\)/',
-        'keyPattern' => '/KEY\s`([\w]+)`\s?\((.*)\)/',
-        'defaultValuePattern' => '/DEFAULT\s\'(.*)\'/',
-        'lengthValuePattern' => '/^`([\w]+)`\s([\w]+)\(?([0-9]+)?\)?/',
-        'fieldNamePattern' => '/^`([\w]+)`\s?(([\w]+)\(?([\d]+)?\)?)?/'
+        )
     );
 
     public function __construct($path)
@@ -38,6 +28,8 @@ class DiskExtractor
         }
 
         $this->source->setPath($path);
+
+        $this->TableExtractor = new extractor\Table();
     }
 
     public function run()
@@ -141,163 +133,11 @@ class DiskExtractor
         return $tables;
     }
 
-    /**
-     * @param $fieldString
-     * @return PrimaryKey
-     */
-    public static function extractPrimaryKeyFromString($fieldString)
-    {
-        $pattern = self::$conventions['primaryKeyPattern'];
-        preg_match($pattern, $fieldString, $matches);
-        if ($matches) {
-            $key = new PrimaryKey;
-            $key->Column = $matches[1];
-            return $key;
-        }
-    }
-
-    /**
-     * @param $fieldString
-     * @return Key
-     */
-    public static function extractKeyFromString($fieldString)
-    {
-        $pattern = self::$conventions['keyPattern'];
-        preg_match($pattern, $fieldString, $matches);
-        if ($matches) {
-            $rawColumns = explode('`', $matches[2]);
-
-            $Columns = array();
-            foreach ($rawColumns as $rawColumn) {
-                $rawColumn = trim($rawColumn);
-                if (!empty($rawColumn)) {
-                    $Columns[] = $rawColumn;
-                }
-            }
-
-            if (!empty($Columns)) {
-                $key = new Key;
-                $key->Label = $matches[1];
-                $key->Columns = $Columns;
-                return $key;
-            }
-        }
-    }
-
-    public static function extractFieldFromString($fieldString)
-    {
-        $fieldNamePattern = self::$conventions['fieldNamePattern'];
-        preg_match($fieldNamePattern, $fieldString, $matches);
-        if ($matches) {
-            $field = new Field;
-            $field->Id = $matches[1];
-
-            $lengthValuePattern = self::$conventions['lengthValuePattern'];
-            preg_match($lengthValuePattern, $fieldString, $matchesType);
-            if ($matchesType) {
-                $field->Type = strtoupper($matchesType[2]);
-                if (isset($matchesType[3]) && !empty($matchesType[3])) {
-                    $field->Length = $matchesType[3];
-                }
-            }
-
-            $defaultValuePattern = self::$conventions['defaultValuePattern'];
-            preg_match($defaultValuePattern, $fieldString, $matchesDefault);
-            if ($matchesDefault) {
-                if (strpos($matchesDefault[1], '\'')) {
-                    $matchesDefault[1] = substr($matchesDefault[1], 0, strpos($matchesDefault[1], '\''));
-                }
-                $field->Default = empty($matchesDefault[1]) ? "" : $matchesDefault[1];
-            }
-
-            if (strpos(strtoupper($fieldString), 'AUTO_INCREMENT')) {
-                $field->Autoincrement = true;
-            }
-
-            $field->Null = !(strpos(strtoupper($fieldString), 'NOT NULL') > 0);
-            return $field;
-        }
-        return false;
-    }
-
-    protected function fieldExtractor($fieldString, $table)
-    {
-        $fieldString = trim($fieldString);
-
-        if ($primaryKey = self::extractPrimaryKeyFromString($fieldString)) {
-            $table->Keys[] = $primaryKey;
-            return true;
-        }
-
-        if ($key = self::extractKeyFromString($fieldString)) {
-            $table->Keys[] = $key;
-            return true;
-        }
-
-        if ($field = self::extractFieldFromString($fieldString)) {
-            $table->Fields[] = $field;
-            return true;
-        }
-
-        return false;
-    }
-
     protected function extractTable($contents)
     {
-        $table = new Table;
-        $pattern = self::$conventions['tablePattern'];
-
-        preg_match($pattern, $contents, $matches);
-        if ($matches) {
-            $table->Name = $matches[2];
-
-            $listen = false;
-            $parenthesisLevel = 0;
-            $fieldsString = "";
-
-            $inSingleQuote = false;
-            $inDoubleQuote = false;
-
-            $contentOneLiner = str_replace("\n", " ", $contents);
-            for ($i=0; $i < strlen($contentOneLiner); $i++) {
-                $char = $contentOneLiner[$i];
-
-                if ($listen) {
-                    if (($char == '(') && !$inSingleQuote && !$inDoubleQuote) {
-                        $parenthesisLevel++;
-                    }
-                    if (($char == ')') && !$inSingleQuote && !$inDoubleQuote) {
-                        $parenthesisLevel--;
-                    }
-
-                    if (($char == ',') && !$inSingleQuote && !$inDoubleQuote && ($parenthesisLevel == 1)) {
-                        // field separator
-                        $this->fieldExtractor($fieldsString, $table);
-                        $fieldsString = "";
-                    }
-
-                    if (($char == ')') && ($parenthesisLevel == 0)) {
-                        $listen = false;
-                        if (trim($fieldsString) != "") {
-                            $this->fieldExtractor($fieldsString, $table);
-                        }
-                    }
-
-                    if ((($char != ',') && !$inSingleQuote && !$inDoubleQuote) || $inSingleQuote || $inDoubleQuote) {
-                        $fieldsString .= $char;
-                    }
-                }
-
-                if (!$listen && ($char == '(')) {
-                    $listen = true;
-                    $parenthesisLevel = 1;
-                }
-            }
-
-            return $table;
-        }
-
-        return false;
+        return $this->TableExtractor
+            ->from($contents)
+            ->getTable();
     }
 
     private function getDatabaseName($filename)
