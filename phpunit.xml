@@ -12,6 +12,16 @@
         </testsuite>
     </testsuites>
 
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./</directory>
+            <exclude>
+                <directory suffix=".php">example/</directory>
+                <directory suffix=".php">tests/</directory>
+                <directory suffix=".php">vendor/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
     <php>
         <const name="TESTING" value="0" />
     </php>
