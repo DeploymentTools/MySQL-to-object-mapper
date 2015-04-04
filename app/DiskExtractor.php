@@ -12,11 +12,17 @@ class DiskExtractor
     protected $files = array();
     protected $databases = array();
 
-    protected $conventions = array(
+    protected static $conventions = array(
         'database_from_file_pattern' => array(
             '/([\w]+)\.([\w]+).sql/',
             '/([\w]+).sql/'
-        )
+        ),
+        'tablePattern' => '/CREATE\sTABLE\s(IF NOT EXISTS)?\s?`?([\w]+)`?/',
+        'primaryKeyPattern' => '/PRIMARY\sKEY\s\(`([\w]+)`\)/',
+        'keyPattern' => '/KEY\s`([\w]+)`\s?\((.*)\)/',
+        'defaultValuePattern' => '/DEFAULT\s\'(.*)\'/',
+        'lengthValuePattern' => '/^`([\w]+)`\s([\w]+)\(?([0-9]+)?\)?/',
+        'fieldNamePattern' => '/^`([\w]+)`\s?(([\w]+)\(?([\d]+)?\)?)?/'
     );
 
     public function __construct($path)
@@ -63,7 +69,9 @@ class DiskExtractor
 
     private function extractTables($contents)
     {
-        $contentsLines = explode("\n", $contents . "\n;"); // appended delimiter, as safety
+        // appended delimiter, for safety
+        $contents = $contents . "\n;";
+        $contentsLines = explode("\n", $contents);
 
         $tables = array();
         $listenForTables = false;
@@ -139,7 +147,8 @@ class DiskExtractor
      */
     public static function extractPrimaryKeyFromString($fieldString)
     {
-        preg_match('/PRIMARY\sKEY\s\(`([\w]+)`\)/', $fieldString, $matches);
+        $pattern = self::$conventions['primaryKeyPattern'];
+        preg_match($pattern, $fieldString, $matches);
         if ($matches) {
             $key = new PrimaryKey;
             $key->Column = $matches[1];
@@ -153,7 +162,8 @@ class DiskExtractor
      */
     public static function extractKeyFromString($fieldString)
     {
-        preg_match('/KEY\s`([\w]+)`\s?\((.*)\)/', $fieldString, $matches);
+        $pattern = self::$conventions['keyPattern'];
+        preg_match($pattern, $fieldString, $matches);
         if ($matches) {
             $rawColumns = explode('`', $matches[2]);
 
@@ -176,12 +186,14 @@ class DiskExtractor
 
     public static function extractFieldFromString($fieldString)
     {
-        preg_match('/^`([\w]+)`\s?(([\w]+)\(?([\d]+)?\)?)?/', $fieldString, $matches);
+        $fieldNamePattern = self::$conventions['fieldNamePattern'];
+        preg_match($fieldNamePattern, $fieldString, $matches);
         if ($matches) {
             $field = new Field;
             $field->Id = $matches[1];
 
-            preg_match('/^`([\w]+)`\s([\w]+)\(?([0-9]+)?\)?/', $fieldString, $matchesType);
+            $lengthValuePattern = self::$conventions['lengthValuePattern'];
+            preg_match($lengthValuePattern, $fieldString, $matchesType);
             if ($matchesType) {
                 $field->Type = strtoupper($matchesType[2]);
                 if (isset($matchesType[3]) && !empty($matchesType[3])) {
@@ -189,7 +201,8 @@ class DiskExtractor
                 }
             }
 
-            preg_match('/DEFAULT\s\'(.*)\'/', $fieldString, $matchesDefault);
+            $defaultValuePattern = self::$conventions['defaultValuePattern'];
+            preg_match($defaultValuePattern, $fieldString, $matchesDefault);
             if ($matchesDefault) {
                 if (strpos($matchesDefault[1], '\'')) {
                     $matchesDefault[1] = substr($matchesDefault[1], 0, strpos($matchesDefault[1], '\''));
@@ -232,14 +245,15 @@ class DiskExtractor
     protected function extractTable($contents)
     {
         $table = new Table;
-        preg_match('/CREATE\sTABLE\s(IF NOT EXISTS)?\s?`?([\w]+)`?/', $contents, $matches);
+        $pattern = self::$conventions['tablePattern'];
+
+        preg_match($pattern, $contents, $matches);
         if ($matches) {
             $table->Name = $matches[2];
 
             $listen = false;
             $parenthesisLevel = 0;
             $fieldsString = "";
-            $fieldsArray = array();
 
             $inSingleQuote = false;
             $inDoubleQuote = false;
@@ -290,10 +304,10 @@ class DiskExtractor
     {
         $filename = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $filename);
 
-        if ($this->conventions['database_from_file_pattern']) {
+        if (self::$conventions['database_from_file_pattern']) {
             $filenameTemp = explode(DIRECTORY_SEPARATOR, $filename);
             $filenameTemp = end($filenameTemp);
-            foreach ($this->conventions['database_from_file_pattern'] as $pattern) {
+            foreach (self::$conventions['database_from_file_pattern'] as $pattern) {
                 preg_match($pattern, $filenameTemp, $matches);
                 if ($matches) {
                     return $matches[1];

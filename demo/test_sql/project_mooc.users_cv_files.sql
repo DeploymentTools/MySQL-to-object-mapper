@@ -1,9 +1,0 @@
-CREATE TABLE `users_cv_files` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cvID` int(11) DEFAULT NULL,
-  `userID` int(11) DEFAULT NULL,
-  `filename` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
