@@ -135,7 +135,7 @@
                     "Type": "TIMESTAMP",
                     "Length": null,
                     "Null": false,
-                    "Default": "0000-00-00 00:00:00",
+                    "Default": null,
                     "Comment": null,
                     "Autoincrement": false
                 }
@@ -181,7 +181,7 @@
                     "Type": "INT",
                     "Length": 3,
                     "Null": true,
-                    "Default": "1",
+                    "Default": null,
                     "Comment": null,
                     "Autoincrement": false
                 },
@@ -217,7 +217,7 @@
                     "Type": "INT",
                     "Length": 1,
                     "Null": true,
-                    "Default": "",
+                    "Default": null,
                     "Comment": null,
                     "Autoincrement": false
                 },
@@ -226,7 +226,7 @@
                     "Type": "INT",
                     "Length": 1,
                     "Null": true,
-                    "Default": "",
+                    "Default": null,
                     "Comment": null,
                     "Autoincrement": false
                 },
@@ -235,7 +235,7 @@
                     "Type": "INT",
                     "Length": 1,
                     "Null": true,
-                    "Default": "",
+                    "Default": null,
                     "Comment": null,
                     "Autoincrement": false
                 },
@@ -244,7 +244,7 @@
                     "Type": "INT",
                     "Length": 1,
                     "Null": true,
-                    "Default": "",
+                    "Default": null,
                     "Comment": null,
                     "Autoincrement": false
                 },
@@ -253,7 +253,7 @@
                     "Type": "INT",
                     "Length": 1,
                     "Null": true,
-                    "Default": "",
+                    "Default": null,
                     "Comment": null,
                     "Autoincrement": false
                 },
@@ -352,7 +352,7 @@
                     "Type": "TIMESTAMP",
                     "Length": null,
                     "Null": false,
-                    "Default": "0000-00-00 00:00:00",
+                    "Default": " COMMENT ",
                     "Comment": null,
                     "Autoincrement": false
                 }
@@ -360,6 +360,28 @@
             "Keys": [
                 {
                     "Column": "id"
+                },
+                {
+                    "Label": "companieID",
+                    "Columns": [
+                        "companieID"
+                    ]
+                },
+                {
+                    "Label": "ProfilEducatie",
+                    "Columns": [
+                        "profil_scoala_primara",
+                        "profil_scoala_profesionala",
+                        "profil_liceu",
+                        "profil_facultate",
+                        "profil_postuniversitar"
+                    ]
+                },
+                {
+                    "Label": "pozitii",
+                    "Columns": [
+                        "pozitii"
+                    ]
                 }
             ]
         }

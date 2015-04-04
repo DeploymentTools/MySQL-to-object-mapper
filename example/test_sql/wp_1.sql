@@ -8,7 +8,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 USE `wp_nou`;
 
-/*Table structure for table `wp_commentmeta` */
+/*Fields structure for table `wp_commentmeta` */
 
 DROP TABLE IF EXISTS `wp_commentmeta`;
 
@@ -22,7 +22,7 @@ CREATE TABLE `wp_commentmeta` (
   KEY `meta_key` (`meta_key`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-/*Table structure for table `wp_comments` */
+/*Fields structure for table `wp_comments` */
 
 DROP TABLE IF EXISTS `wp_comments`;
 
@@ -49,7 +49,7 @@ CREATE TABLE `wp_comments` (
   KEY `comment_parent` (`comment_parent`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-/*Table structure for table `wp_links` */
+/*Fields structure for table `wp_links` */
 
 DROP TABLE IF EXISTS `wp_links`;
 
@@ -71,7 +71,7 @@ CREATE TABLE `wp_links` (
   KEY `link_visible` (`link_visible`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
-/*Table structure for table `wp_options` */
+/*Fields structure for table `wp_options` */
 
 DROP TABLE IF EXISTS `wp_options`;
 
@@ -84,7 +84,7 @@ CREATE TABLE `wp_options` (
   UNIQUE KEY `option_name` (`option_name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6456 DEFAULT CHARSET=utf8;
 
-/*Table structure for table `wp_postmeta` */
+/*Fields structure for table `wp_postmeta` */
 
 DROP TABLE IF EXISTS `wp_postmeta`;
 
@@ -98,7 +98,7 @@ CREATE TABLE `wp_postmeta` (
   KEY `meta_key` (`meta_key`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4522 DEFAULT CHARSET=utf8;
 
-/*Table structure for table `wp_posts` */
+/*Fields structure for table `wp_posts` */
 
 DROP TABLE IF EXISTS `wp_posts`;
 
@@ -133,7 +133,7 @@ CREATE TABLE `wp_posts` (
   KEY `post_author` (`post_author`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1724 DEFAULT CHARSET=utf8;
 
-/*Table structure for table `wp_term_relationships` */
+/*Fields structure for table `wp_term_relationships` */
 
 DROP TABLE IF EXISTS `wp_term_relationships`;
 
@@ -145,7 +145,7 @@ CREATE TABLE `wp_term_relationships` (
   KEY `term_taxonomy_id` (`term_taxonomy_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-/*Table structure for table `wp_term_taxonomy` */
+/*Fields structure for table `wp_term_taxonomy` */
 
 DROP TABLE IF EXISTS `wp_term_taxonomy`;
 
@@ -161,7 +161,7 @@ CREATE TABLE `wp_term_taxonomy` (
   KEY `taxonomy` (`taxonomy`)
 ) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
-/*Table structure for table `wp_terms` */
+/*Fields structure for table `wp_terms` */
 
 DROP TABLE IF EXISTS `wp_terms`;
 
@@ -175,7 +175,7 @@ CREATE TABLE `wp_terms` (
   KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 
-/*Table structure for table `wp_usermeta` */
+/*Fields structure for table `wp_usermeta` */
 
 DROP TABLE IF EXISTS `wp_usermeta`;
 
@@ -189,7 +189,7 @@ CREATE TABLE `wp_usermeta` (
   KEY `meta_key` (`meta_key`)
 ) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
-/*Table structure for table `wp_users` */
+/*Fields structure for table `wp_users` */
 
 DROP TABLE IF EXISTS `wp_users`;
 

@@ -1,6 +1,6 @@
 <?php
 namespace tests\DiskExtractor;
-use \MySQLExtractor\Helper\System;
+use \MySQLExtractor\Common\System;
 use \MySQLExtractor\DiskExtractor\Main;
 use \MySQLExtractor\Exceptions\InvalidPathException;
 

@@ -5,7 +5,7 @@ class fieldExtractor extends \PHPUnit_Framework_TestCase
 {
     public function testReturn()
     {
-        $tableExtractor = \Mockery::mock('\\MySQLExtractor\\DiskExtractor\\Table')->makePartial();
+        $tableExtractor = \Mockery::mock('\\MySQLExtractor\\DiskExtractor\\Fields')->makePartial();
 
         $tableObject = new \stdClass();
         $tableObject->Keys = array();

@@ -1,6 +1,6 @@
 <?php
 namespace MySQLExtractor;
-use \MySQLExtractor\Helper\System;
+use \MySQLExtractor\Common\System;
 use \MySQLExtractor\Exceptions\InvalidPathException;
 
 class Worker

@@ -22,5 +22,8 @@ CREATE TABLE `anunturi_angajare` (
   `data_expirare` date DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'This column has 0 as default',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `companieID` (`companieID`),
+  KEY `ProfilEducatie` (`profil_scoala_primara`,`profil_scoala_profesionala`,`profil_liceu`,`profil_facultate`,`profil_postuniversitar`),
+  KEY `pozitii` (`pozitii`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;

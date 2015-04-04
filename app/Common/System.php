@@ -1,7 +1,8 @@
 <?php
-namespace MySQLExtractor\Helper;
+namespace MySQLExtractor\Common;
 
-class System {
+class System
+{
     /**
      * Helper for calling PHP's internal methods
      * @var \Mockery

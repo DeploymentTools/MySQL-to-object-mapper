@@ -4,14 +4,14 @@ use MySQLExtractor\Presentation\Field;
 use MySQLExtractor\Presentation\Key;
 use MySQLExtractor\Presentation\PrimaryKey;
 
-class Table {
+class Fields {
     protected $tableObject; // target
     protected $stringContents;
     protected $elementFragments = array();
     protected static $patterns = array(
         'table' => '/CREATE\sTABLE\s(IF NOT EXISTS)?\s?`?([\w]+)`?/',
         'primaryKey' => '/PRIMARY\sKEY\s\(`([\w]+)`\)/',
-        'key' => '/KEY\s`([\w]+)`\s?\((.*)\)/',
+        'key' => '/KEY\s`([\w\_]+)`\s?\((.*)\)/',
         'defaultValue' => '/DEFAULT\s\'(.*)\'/',
         'lengthValue' => '/^`([\w]+)`\s([\w]+)\(?([0-9]+)?\)?/',
         'fieldName' => '/^`([\w]+)`\s?(([\w]+)\(?([\d]+)?\)?)?/'
@@ -57,6 +57,11 @@ class Table {
             $isOpeningParenthesis = ($this->currentChar == '(');
             $isClosingParenthesis = ($this->currentChar == ')');
             $isComma = ($this->currentChar == ',');
+
+            // if is comma but in a KEY then ignore
+            if ($isComma && $this->parenthesisLevel > 1) {
+                $isComma = false;
+            }
 
             if ($this->listenForChars) {
                 if ($isOpeningParenthesis || $isClosingParenthesis) {
@@ -164,7 +169,7 @@ class Table {
             $Columns = array();
             foreach ($rawColumns as $rawColumn) {
                 $rawColumn = trim($rawColumn);
-                if (!empty($rawColumn)) {
+                if (!empty($rawColumn) && ($rawColumn != ',')) {
                     $Columns[] = $rawColumn;
                 }
             }
