@@ -1,5 +1,5 @@
 <?php
-namespace MySQLExtractor;
+namespace MySQLExtractor\Helper;
 
 class System {
     /**

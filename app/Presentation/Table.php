@@ -1,5 +1,5 @@
 <?php
-namespace MySQLExtractor\assets\db;
+namespace MySQLExtractor\Presentation;
 
 class Table
 {

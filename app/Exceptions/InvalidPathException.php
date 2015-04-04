@@ -1,5 +1,5 @@
 <?php
-namespace MySQLExtractor\exceptions;
+namespace MySQLExtractor\Exceptions;
 
 class InvalidPathException extends \Exception
 {

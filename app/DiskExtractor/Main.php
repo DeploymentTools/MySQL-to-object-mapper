@@ -1,45 +1,42 @@
 <?php
-namespace MySQLExtractor;
-use MySQLExtractor\assets\db\Database;
+namespace MySQLExtractor\DiskExtractor;
+use MySQLExtractor\Presentation\Database;
+use MySQLExtractor\Exceptions\InvalidPathException;
+use MySQLExtractor\Helper\System;
 
-class DiskExtractor
+class Main
 {
     protected $source;
     protected $files = array();
     protected $databases = array();
 
-    protected static $conventions = array(
-        'database_from_file_pattern' => array(
-            '/([\w]+)\.([\w]+).sql/',
-            '/([\w]+).sql/'
-        )
-    );
-
     public function __construct($path)
     {
         if (!System::file_exists($path)) {
-            throw new exceptions\InvalidPathException($path);
+            throw new InvalidPathException($path);
         }
 
-        if (System::is_dir($path)) {
-            $this->source =  new assets\source\Folder;
-        } else {
-            $this->source =  new assets\source\File;
-        }
-
-        $this->source->setPath($path);
-
-        $this->TableExtractor = new extractor\Table();
+        $this->source = $path;
+        $this->TableExtractor = new Table();
     }
 
     public function run()
     {
-        $this->prepareInputFiles();
-        $this->processFiles();
-    }
+        if (System::is_dir($this->source)) {
+            foreach (new \DirectoryIterator($this->source) as $fileInfo) {
+                if(!$fileInfo->isDot() && !$fileInfo->isDir()) {
+                    $filename = $this->source . DIRECTORY_SEPARATOR . $fileInfo->getFilename();
+                    $this->files[$filename] = System::file_get_contents($filename);
+                }
+            }
+        } else {
+            $this->files[$this->source] = System::file_get_contents($filename);
+        }
 
-    private function processFiles()
-    {
+        if (empty($this->files)) {
+            throw new InvalidSourceException("There were no input files found.", 1);
+        }
+
         $this->databases = array();
 
         foreach ($this->files as $key => $value) {
@@ -51,8 +48,11 @@ class DiskExtractor
                 $this->databases[$databaseName] = $database;
             }
 
-            $rawExtracted = $this->extractTables($value);
-            $this->databases[$databaseName]->Tables = array_merge($this->databases[$databaseName]->Tables, $rawExtracted);
+            $this->databases[$databaseName]->Tables = array_merge(
+                $this->databases[$databaseName]->Tables,
+                $this->extractTables($value)
+            );
+
             if (count($this->databases[$databaseName]->Tables) == 0) {
                 unset($this->databases[$databaseName]);
             }
@@ -143,15 +143,17 @@ class DiskExtractor
     private function getDatabaseName($filename)
     {
         $filename = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $filename);
+        $filenameTemp = end(explode(DIRECTORY_SEPARATOR, $filename));
 
-        if (self::$conventions['database_from_file_pattern']) {
-            $filenameTemp = explode(DIRECTORY_SEPARATOR, $filename);
-            $filenameTemp = end($filenameTemp);
-            foreach (self::$conventions['database_from_file_pattern'] as $pattern) {
-                preg_match($pattern, $filenameTemp, $matches);
-                if ($matches) {
-                    return $matches[1];
-                }
+        $patterns = array(
+            '/([\w]+)\.([\w]+).sql/',
+            '/([\w]+).sql/'
+        );
+
+        foreach ($patterns as $pattern) {
+            preg_match($pattern, $filenameTemp, $matches);
+            if ($matches) {
+                return $matches[1];
             }
         }
 
@@ -166,32 +168,6 @@ class DiskExtractor
         }
 
         return '_no_name_';
-    }
-
-    private function prepareInputFiles()
-    {
-        $path = $this->source->getPath();
-        $this->files = array();
-
-        if ($this->source instanceof assets\source\Folder) {
-            foreach (new \DirectoryIterator($path) as $fileInfo) {
-                if($fileInfo->isDot() || $fileInfo->isDir()) {
-                    continue;
-                }
-                $this->files[$path . '/' . $fileInfo->getFilename()] = null;
-            }
-        } else {
-            $this->files[$path] = null;
-        }
-
-        if (empty($this->files)) {
-            throw new exceptions\InvalidSourceException("There were no input files found.", 1);
-        }
-
-        // get contents
-        foreach ($this->files as $filename => $value) {
-            $this->files[$filename] = file_get_contents($filename);
-        }
     }
 
     public function databases()

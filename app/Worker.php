@@ -1,5 +1,7 @@
 <?php
 namespace MySQLExtractor;
+use \MySQLExtractor\Helper\System;
+use \MySQLExtractor\Exceptions\InvalidPathException;
 
 class Worker
 {
@@ -7,14 +9,17 @@ class Worker
 
     public function processDisk($path)
     {
-        $this->extractor = new DiskExtractor($path);
+        $this->extractor = new DiskExtractor\Main($path);
         $this->extractor->run();
     }
 
     public function output($path)
     {
-        if (!file_exists($path) || (file_exists($path) && !is_dir($path))) {
-            throw new exceptions\InvalidPathException($path);
+        $fileExists = System::file_exists($path);
+        $isDir = System::is_dir($path);
+
+        if (!$fileExists || ($fileExists && !$isDir)) {
+            throw new InvalidPathException($path);
         }
 
         foreach ($this->extractor->databases() as $database) {

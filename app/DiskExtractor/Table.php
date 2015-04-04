@@ -1,8 +1,8 @@
 <?php
-namespace MySQLExtractor\extractor;
-use MySQLExtractor\assets\db\Field;
-use MySQLExtractor\assets\db\Key;
-use MySQLExtractor\assets\db\PrimaryKey;
+namespace MySQLExtractor\DiskExtractor;
+use MySQLExtractor\Presentation\Field;
+use MySQLExtractor\Presentation\Key;
+use MySQLExtractor\Presentation\PrimaryKey;
 
 class Table {
     protected $tableObject; // target
@@ -243,7 +243,7 @@ class Table {
     {
         $this->stringContents = null;
         $this->elementFragments = array();
-        $this->tableObject = new \MySQLExtractor\assets\db\Table();
+        $this->tableObject = new \MySQLExtractor\Presentation\Table();
         $this->parenthesisLevel = 0;
         $this->listenForChars = false;
         $this->inSingleQuote = false;

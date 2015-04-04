@@ -1,11 +1,11 @@
 <?php
-namespace tests\extractor\Table;
+namespace tests\DiskExtractor;
 
 class fieldExtractor extends \PHPUnit_Framework_TestCase
 {
     public function testReturn()
     {
-        $tableExtractor = \Mockery::mock('\\MySQLExtractor\\extractor\\Table')->makePartial();
+        $tableExtractor = \Mockery::mock('\\MySQLExtractor\\DiskExtractor\\Table')->makePartial();
 
         $tableObject = new \stdClass();
         $tableObject->Keys = array();
