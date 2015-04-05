@@ -39,7 +39,8 @@ class Databases {
     private function getDatabaseName($filename)
     {
         $filename = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $filename);
-        $filenameTemp = end(explode(DIRECTORY_SEPARATOR, $filename));
+        $filenameTemp = explode(DIRECTORY_SEPARATOR, $filename);
+        $filenameTemp = end($filenameTemp);
 
         $patterns = array(
             '/([\w]+)\.([\w]+).sql/',
