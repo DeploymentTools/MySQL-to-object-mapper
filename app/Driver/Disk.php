@@ -1,10 +1,11 @@
 <?php
-namespace MySQLExtractor\DiskExtractor;
+namespace MySQLExtractor\Driver;
 use MySQLExtractor\Common\Collection;
 use MySQLExtractor\Common\System;
 use MySQLExtractor\Exceptions\InvalidPathException;
+use MySQLExtractor\Extractor\Databases;
 
-class Main
+class Disk extends Driver
 {
     protected $source;
     protected $files;
@@ -27,7 +28,7 @@ class Main
         $this->files->set($filename, System::file_get_contents($filename));
     }
 
-    public function run()
+    public function execute()
     {
         if (System::is_dir($this->source)) {
             foreach (new \DirectoryIterator($this->source) as $fileInfo) {

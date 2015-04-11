@@ -1,5 +1,5 @@
 <?php
-namespace tests\Worker;
+namespace tests\Application;
 
 class processDiskTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class processDiskTest extends \PHPUnit_Framework_TestCase
         $refProperty->setAccessible(true);
         $refProperty->setValue($system, $systemMock);
 
-        $worker = new \MySQLExtractor\Worker();
+        $worker = new \MySQLExtractor\Application();
         $worker->processDisk($inputPath);
 
         $extractor = \PHPUnit_Framework_Assert::readAttribute($worker, 'extractor');

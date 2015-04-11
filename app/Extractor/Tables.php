@@ -1,8 +1,5 @@
 <?php
-namespace MySQLExtractor\DiskExtractor;
-//use MySQLExtractor\Presentation\Field;
-//use MySQLExtractor\Presentation\Key;
-//use MySQLExtractor\Presentation\PrimaryKey;
+namespace MySQLExtractor\Extractor;
 
 use MySQLExtractor\Common\Collection;
 

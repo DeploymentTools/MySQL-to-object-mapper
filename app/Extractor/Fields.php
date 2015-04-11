@@ -1,5 +1,5 @@
 <?php
-namespace MySQLExtractor\DiskExtractor;
+namespace MySQLExtractor\Extractor;
 use MySQLExtractor\Presentation\Field;
 use MySQLExtractor\Presentation\Key;
 use MySQLExtractor\Presentation\PrimaryKey;

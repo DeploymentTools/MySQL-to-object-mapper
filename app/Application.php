@@ -3,10 +3,10 @@ namespace MySQLExtractor;
 use \MySQLExtractor\Common\System;
 use \MySQLExtractor\Exceptions\InvalidPathException;
 
-class Worker
+class Application
 {
     /**
-     * @var DiskExtractor\Main
+     * @var \MySQLExtractor\Driver\Driver
      */
     protected $extractor;
 
@@ -14,12 +14,24 @@ class Worker
      * Initializes the extractor using the input path and runs the scan.
      *
      * @param $path Input source of SQL dumps that will be scanned.
-     * @throws DiskExtractor\InvalidSourceException
+     * @throws InvalidPathException
      */
     public function processDisk($path)
     {
-        $this->extractor = new DiskExtractor\Main($path);
-        $this->extractor->run();
+        $this->extractor = new Driver\Disk($path);
+        $this->extractor->execute();
+    }
+
+    /**
+     * Initializes the extractor using the input MySQL credentials and runs the scan.
+     *
+     * @param $mysqlCredentials object {host,port,dbuser,dbpass,dbname}
+     * @throws InvalidPathException
+     */
+    public function processServer($mysqlCredentials)
+    {
+        $this->extractor = new Driver\Server($mysqlCredentials);
+        $this->extractor->execute();
     }
 
     /**

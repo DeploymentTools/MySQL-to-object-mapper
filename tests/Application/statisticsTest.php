@@ -1,9 +1,9 @@
 <?php
-namespace tests\Worker;
+namespace tests\Application;
 
 use MySQLExtractor\Presentation\Database;
 use MySQLExtractor\Presentation\Table;
-use MySQLExtractor\Worker;
+use MySQLExtractor\Application;
 
 class statisticsTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,7 +17,7 @@ class statisticsTest extends \PHPUnit_Framework_TestCase
             '- database [db2] with [2] tables.'
         );
 
-        $worker = new Worker();
+        $worker = new Application();
 
         $databases = array();
 
@@ -38,7 +38,7 @@ class statisticsTest extends \PHPUnit_Framework_TestCase
         );
         $databases[] = $database;
 
-        $extractor = \Mockery::mock('\\MySQLExtractor\\DiskExtractor\\Main')->makePartial();
+        $extractor = \Mockery::mock('\\MySQLExtractor\\Extractor\\Main')->makePartial();
         $extractor->shouldReceive('databases')->andReturn($databases);
 
         $refObject = new \ReflectionObject($worker);

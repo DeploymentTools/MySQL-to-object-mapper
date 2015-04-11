@@ -1,11 +1,11 @@
 <?php
-namespace tests\Worker;
+namespace tests\Application;
 
 use MySQLExtractor\Common\System;
 use MySQLExtractor\Exceptions\InvalidPathException;
 //use MySQLExtractor\Presentation\Database;
 use MySQLExtractor\Presentation\Database;
-use MySQLExtractor\Worker;
+use MySQLExtractor\Application;
 
 class outputTest extends \PHPUnit_Framework_TestCase
 {
@@ -25,7 +25,7 @@ class outputTest extends \PHPUnit_Framework_TestCase
         $refProperty->setAccessible(true);
         $refProperty->setValue($system, $systemMock);
 
-        $worker = new Worker();
+        $worker = new Application();
 
         try {
             $worker->output('/invalid-folder/');
@@ -52,7 +52,7 @@ class outputTest extends \PHPUnit_Framework_TestCase
         $refProperty->setAccessible(true);
         $refProperty->setValue($system, $systemMock);
 
-        $worker = new Worker();
+        $worker = new Application();
 
         try {
             $worker->output('/file-output');
@@ -79,7 +79,7 @@ class outputTest extends \PHPUnit_Framework_TestCase
         $refProperty->setAccessible(true);
         $refProperty->setValue($system, $systemMock);
 
-        $worker = new Worker();
+        $worker = new Application();
 
         $databases = array(
             new Database('db1'),
@@ -92,7 +92,7 @@ class outputTest extends \PHPUnit_Framework_TestCase
         $content1 = json_encode($databases[0], JSON_PRETTY_PRINT);
         $content2 = json_encode($databases[1], JSON_PRETTY_PRINT);
 
-        $extractorMock = \Mockery::mock('\\MySQLExtractor\\DiskExtractor\\Main')->makePartial();
+        $extractorMock = \Mockery::mock('\\MySQLExtractor\\Extractor\\Main')->makePartial();
         $extractorMock->shouldReceive('databases')->andReturn($databases);
         $systemMock->shouldReceive('file_put_contents')->once()->with($filename1, $content1);
         $systemMock->shouldReceive('file_put_contents')->once()->with($filename2, $content2);

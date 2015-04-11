@@ -16,6 +16,8 @@
         <whitelist>
             <directory suffix=".php">./</directory>
             <exclude>
+                <file>app/createPhar.php</file>
+                <file>app/cli.php</file>
                 <directory suffix=".php">example/</directory>
                 <directory suffix=".php">tests/</directory>
                 <directory suffix=".php">vendor/</directory>

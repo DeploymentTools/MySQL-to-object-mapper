@@ -1,7 +1,7 @@
 <?php
-namespace tests\DiskExtractor;
+namespace tests\Driver\Disk;
 use \MySQLExtractor\Common\System;
-use \MySQLExtractor\DiskExtractor\Main;
+use \MySQLExtractor\Driver\Disk;
 use \MySQLExtractor\Exceptions\InvalidPathException;
 
 /**
@@ -26,7 +26,7 @@ class __constructor extends \PHPUnit_Framework_TestCase
         $refProperty->setAccessible(true);
         $refProperty->setValue($systemHelper, $systemMock);
 
-        $DiskExtractor = new Main($path);
+        $DiskExtractor = new Disk($path);
         $sourcePath = \PHPUnit_Framework_Assert::readAttribute($DiskExtractor, 'source');
         $this->assertEquals($path, $sourcePath);
     }
@@ -48,7 +48,7 @@ class __constructor extends \PHPUnit_Framework_TestCase
         $refProperty->setValue($systemHelper, $systemMock);
 
         try {
-            new Main($path);
+            new Disk($path);
             $this->fail();
 
         } catch (InvalidPathException $e) {
