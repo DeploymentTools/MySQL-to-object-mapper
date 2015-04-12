@@ -18,9 +18,17 @@ class System
      */
     public static function __callStatic($methodName, $args = array())
     {
-        if (defined('TESTING') && !is_null(self::$mock)) {
+        if (!is_null(self::$mock)) {
             return call_user_func_array(array(self::$mock, $methodName), $args);
         }
         return call_user_func_array($methodName, $args);
+    }
+
+    public function getDirectoryIterator($source)
+    {
+        if (!is_null(self::$mock)) {
+            return call_user_func_array(array(self::$mock, 'getDirectoryIterator'), array($source));
+        }
+        return new \DirectoryIterator($source);
     }
 }

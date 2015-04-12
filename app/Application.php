@@ -28,11 +28,11 @@ class Application
      * @param $mysqlCredentials object {host,port,dbuser,dbpass,dbname}
      * @throws InvalidPathException
      */
-    public function processServer($mysqlCredentials)
-    {
-        $this->extractor = new Driver\Server($mysqlCredentials);
-        $this->extractor->execute();
-    }
+//    public function processServer($mysqlCredentials)
+//    {
+//        $this->extractor = new Driver\Server($mysqlCredentials);
+//        $this->extractor->execute();
+//    }
 
     /**
      * For each extracted database, dump a JSON file with the detected structure.

@@ -3,7 +3,7 @@ namespace tests\Common\System;
 
 use MySQLExtractor\Common\System;
 
-class __callStaticTest extends \PHPUnit_Framework_TestCase
+class getDirectoryIteratorTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
@@ -21,26 +21,29 @@ class __callStaticTest extends \PHPUnit_Framework_TestCase
      */
 	public function testWhenMockingTheInternalMethodThenReturnMockedValue()
     {
+        $path = '/dir/to/path';
+        $expected = array('something');
+
         $systemMock = \Mockery::mock('\\MySQLExtractor\\Common\\SystemMock')->makePartial();
-        $systemMock->shouldReceive('file_exists')->with('/invalid-folder/')->andReturn(true);
+        $systemMock->shouldReceive('getDirectoryIterator')->with($path)->andReturn($expected);
 
         $system = new System();
-
         $refObject = new \ReflectionObject($system);
         $refProperty = $refObject->getProperty('mock');
         $refProperty->setAccessible(true);
         $refProperty->setValue($system, $systemMock);
 
-        $this->assertTrue($system::file_exists('/invalid-folder/'));
+        $this->assertEquals($expected, $system::getDirectoryIterator($path));
     }
 
-	/**
-	 * when not mocking then use the internal method
-	 */
-	public function testWhenNotMockingThenUseTheInternalMethod()
-	{
+    /**
+     * when not mocking then return DirectoryIterator
+     */
+	public function testWhenNotMockingThenReturnDirectoryIterator()
+    {
         $system = new System();
-        $this->assertFalse($system::file_exists('/invalid-folder/'));
-        $this->assertEquals($system::time(), time());
-	}
+        $return = $system::getDirectoryIterator('/tmp');
+
+        $this->assertInstanceOf('\\DirectoryIterator', $return);
+    }
 }

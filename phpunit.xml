@@ -4,7 +4,6 @@
         backupGlobals="false"
         backupStaticAttributes="false"
         colors="true"
-        strict="true"
         >
     <testsuites>
         <testsuite name="all">
@@ -24,7 +23,4 @@
             </exclude>
         </whitelist>
     </filter>
-    <php>
-        <const name="TESTING" value="" />
-    </php>
 </phpunit>

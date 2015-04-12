@@ -3,6 +3,7 @@ namespace MySQLExtractor\Driver;
 use MySQLExtractor\Common\Collection;
 use MySQLExtractor\Common\System;
 use MySQLExtractor\Exceptions\InvalidPathException;
+use MySQLExtractor\Exceptions\InvalidSourceException;
 use MySQLExtractor\Extractor\Databases;
 
 class Disk extends Driver
@@ -31,10 +32,8 @@ class Disk extends Driver
     private function prepareSourceEntries()
     {
         if (System::is_dir($this->source)) {
-            foreach (new \DirectoryIterator($this->source) as $fileInfo) {
-                if(!$fileInfo->isDot() && !$fileInfo->isDir()) {
-                    $this->appendSource($fileInfo->getFilename());
-                }
+            foreach($this->getFilesFromFolder() as $file) {
+                $this->appendSource($file);
             }
         } else {
             $this->appendSource();
@@ -55,5 +54,19 @@ class Disk extends Driver
     public function databases()
     {
         return $this->databases;
+    }
+
+    /**
+     * @return array
+     */
+    private function getFilesFromFolder()
+    {
+        $files = array();
+        foreach (System::getDirectoryIterator($this->source) as $fileInfo) {
+            if (!$fileInfo->isDot() && !$fileInfo->isDir()) {
+                $files[] = $fileInfo->getFilename();
+            }
+        }
+        return $files;
     }
 }
