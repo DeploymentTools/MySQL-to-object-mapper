@@ -6,7 +6,7 @@ class setTest extends \PHPUnit_Framework_TestCase
     /**
      * setting an element will store the element under the given key
      */
-	public function testSettingAnElementWillStoreTheElementUnderTheGivenKey()
+    public function testSettingAnElementWillStoreTheElementUnderTheGivenKey()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';

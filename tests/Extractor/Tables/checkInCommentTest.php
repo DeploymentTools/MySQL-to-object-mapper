@@ -15,7 +15,7 @@ class checkInCommentTest extends \PHPUnit_Framework_TestCase
      * when in comment or in multiline comment flags will be true then return true, else will return false
      * @dataProvider commentFlags
      */
-	public function testWhenInCommentOrInMultilineCommentFlagsWillBeTrueThenReturnTrueElseWillReturnFalse(
+    public function testWhenInCommentOrInMultilineCommentFlagsWillBeTrueThenReturnTrueElseWillReturnFalse(
         $inMultiLineComment,
         $inLineComment,
         $previousChar,

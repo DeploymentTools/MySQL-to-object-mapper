@@ -8,7 +8,7 @@ class appendTablesTest extends \PHPUnit_Framework_TestCase
     /**
      * when appending tables then update
      */
-	public function testWhenAppendingTablesThenUpdate()
+    public function testWhenAppendingTablesThenUpdate()
     {
         $tables = array(
             'table_1' => '...1',

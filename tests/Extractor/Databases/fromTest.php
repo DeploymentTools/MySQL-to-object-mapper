@@ -8,7 +8,7 @@ class fromTest extends \PHPUnit_Framework_TestCase
     /**
      * when calling the method then reinitialize the files using the input collection
      */
-	public function testWhenCallingTheMethodThenReinitializeTheFilesUsingTheInputCollection()
+    public function testWhenCallingTheMethodThenReinitializeTheFilesUsingTheInputCollection()
     {
         $DatabaseExtractor = new Databases();
         $filesCollection = new \MySQLExtractor\Common\Collection(array(
@@ -60,7 +60,7 @@ class fromTest extends \PHPUnit_Framework_TestCase
     /**
      * when calling the method then return self
      */
-	public function testWhenCallingTheMethodThenReturnSelf()
+    public function testWhenCallingTheMethodThenReturnSelf()
     {
         $DatabaseExtractor = new Databases();
         $filesCollection = new \MySQLExtractor\Common\Collection(array(

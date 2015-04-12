@@ -6,7 +6,7 @@ class getKeyFromStringTest extends \PHPUnit_Framework_TestCase
     /**
      * when field is not a key then return null
      */
-	public function testWhenFieldIsNotAKeyThenReturnNull()
+    public function testWhenFieldIsNotAKeyThenReturnNull()
     {
         $fieldExtractor = \Mockery::mock('\\MySQLExtractor\\Extractor\\Fields')->makePartial();
 

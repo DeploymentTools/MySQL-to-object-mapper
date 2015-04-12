@@ -6,7 +6,7 @@ class getTest extends \PHPUnit_Framework_TestCase
     /**
      * getting an element will return the value under the given key index
      */
-	public function testGettingAnElementWillReturnTheValueUnderTheGivenKeyIndex()
+    public function testGettingAnElementWillReturnTheValueUnderTheGivenKeyIndex()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';

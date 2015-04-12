@@ -8,7 +8,7 @@ class getTest extends \PHPUnit_Framework_TestCase
     /**
      * when calling the method using three files for two database then return an array of DatabaseItems with the two names and the recovered tables
      */
-	public function testWhenCallingTheMethodUsingThreeFilesForTwoDatabaseThenReturnAnArrayOfDatabaseItemsWithTheTwoNamesAndTheRecoveredTables()
+    public function testWhenCallingTheMethodUsingThreeFilesForTwoDatabaseThenReturnAnArrayOfDatabaseItemsWithTheTwoNamesAndTheRecoveredTables()
     {
         $DatabaseExtractor = new Databases();
         $filesCollection = new \MySQLExtractor\Common\Collection(array(

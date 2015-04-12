@@ -6,7 +6,7 @@ class indexOfTest extends \PHPUnit_Framework_TestCase
     /**
      * indexOf will return the key name for the element
      */
-	public function testIndexOfWillReturnTheKeyNameForTheElement()
+    public function testIndexOfWillReturnTheKeyNameForTheElement()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';

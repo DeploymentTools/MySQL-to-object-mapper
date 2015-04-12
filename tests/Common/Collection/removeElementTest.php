@@ -6,7 +6,7 @@ class removeElementTest extends \PHPUnit_Framework_TestCase
     /**
      * remove will return null if the element is not in array
      */
-	public function testRemoveWillReturnNullIfTheElementIsNotInArray()
+    public function testRemoveWillReturnNullIfTheElementIsNotInArray()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';
@@ -28,7 +28,7 @@ class removeElementTest extends \PHPUnit_Framework_TestCase
     /**
      * removeElement will return true if the element is in array
      */
-	public function testRemoveElementWillReturnTrueIfTheElementIsInArray()
+    public function testRemoveElementWillReturnTrueIfTheElementIsInArray()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';

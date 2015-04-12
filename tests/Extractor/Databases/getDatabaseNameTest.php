@@ -24,7 +24,7 @@ class getDatabaseNameTest extends \PHPUnit_Framework_TestCase
      * when input filename matches parameters then return matched db block
      * @dataProvider validMatchingDatabaseFilenames
      */
-	public function testWhenInputFilenameMatchesParametersThenReturnMatchedDbBlock($filename, $expectedDB)
+    public function testWhenInputFilenameMatchesParametersThenReturnMatchedDbBlock($filename, $expectedDB)
     {
         $DatabaseExtractor = new Databases();
 

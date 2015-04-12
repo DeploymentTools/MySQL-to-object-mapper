@@ -7,11 +7,11 @@ use MySQLExtractor\Application;
 
 class statisticsTest extends \PHPUnit_Framework_TestCase
 {
-	/**
-	 * when entries were found then return array of messages
-	 */
-	public function testWhenEntriesWereFoundThenReturnArrayOfMessages()
-	{
+    /**
+     * when entries were found then return array of messages
+     */
+    public function testWhenEntriesWereFoundThenReturnArrayOfMessages()
+    {
         $expected = array(
             '- database [db1] with [3] tables.',
             '- database [db2] with [2] tables.'
@@ -49,5 +49,5 @@ class statisticsTest extends \PHPUnit_Framework_TestCase
         $statistics = $worker->statistics();
 
         $this->assertEquals($expected, $statistics);
-	}
+    }
 }

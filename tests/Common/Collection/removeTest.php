@@ -25,7 +25,7 @@ class removeTest extends \PHPUnit_Framework_TestCase
     /**
      * remove will return removed element if the requested key is set
      */
-	public function testRemoveWillReturnRemovedElementIfTheRequestedKeyIsSet()
+    public function testRemoveWillReturnRemovedElementIfTheRequestedKeyIsSet()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';

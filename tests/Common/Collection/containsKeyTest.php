@@ -6,7 +6,7 @@ class containsKeyTest extends \PHPUnit_Framework_TestCase
     /**
      * containsKey will return true if an element is set for the input key
      */
-	public function testContainsKeyWillReturnTrueIfAnElementIsSetForTheInputKey()
+    public function testContainsKeyWillReturnTrueIfAnElementIsSetForTheInputKey()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';
@@ -25,7 +25,7 @@ class containsKeyTest extends \PHPUnit_Framework_TestCase
     /**
      * containsKey will return false if an element is not set for the input key
      */
-	public function testContainsKeyWillReturnFalseIfAnElementIsNotSetForTheInputKey()
+    public function testContainsKeyWillReturnFalseIfAnElementIsNotSetForTheInputKey()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';

@@ -6,7 +6,7 @@ class containsTest extends \PHPUnit_Framework_TestCase
     /**
      * contains will return true if an element is set
      */
-	public function testContainsWillReturnTrueIfAnElementIsSet()
+    public function testContainsWillReturnTrueIfAnElementIsSet()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';
@@ -25,7 +25,7 @@ class containsTest extends \PHPUnit_Framework_TestCase
     /**
      * contains will return false if an element is not set
      */
-	public function testContainsWillReturnFalseIfAnElementIsNotSet()
+    public function testContainsWillReturnFalseIfAnElementIsNotSet()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';

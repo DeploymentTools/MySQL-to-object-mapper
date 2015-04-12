@@ -18,7 +18,7 @@ class __constructTest extends \PHPUnit_Framework_TestCase
     /**
      * when initializing with parameters then use them as name and table array
      */
-	public function testWhenInitializingWithParametersThenUseThemAsNameAndTableArray()
+    public function testWhenInitializingWithParametersThenUseThemAsNameAndTableArray()
     {
         $tables = array(
             'table_1' => '...1',

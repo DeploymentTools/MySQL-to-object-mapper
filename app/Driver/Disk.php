@@ -9,8 +9,6 @@ use MySQLExtractor\Extractor\Databases;
 class Disk extends Driver
 {
     protected $source;
-    protected $entries;
-    protected $databases = array();
 
     public function __construct($path)
     {
@@ -49,11 +47,6 @@ class Disk extends Driver
         } else {
             throw new InvalidSourceException("There were no input files found.", 1);
         }
-    }
-
-    public function databases()
-    {
-        return $this->databases;
     }
 
     /**

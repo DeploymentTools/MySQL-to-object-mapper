@@ -6,7 +6,7 @@ class toArrayTest extends \PHPUnit_Framework_TestCase
     /**
      * toArray will return the stored elements with the corresponding keys
      */
-	public function testToArrayWillReturnTheStoredElementsWithTheCorrespondingKeys()
+    public function testToArrayWillReturnTheStoredElementsWithTheCorrespondingKeys()
     {
         $element1 = new \stdClass();
         $element1->Name = 'EL 1';
@@ -30,7 +30,7 @@ class toArrayTest extends \PHPUnit_Framework_TestCase
     /**
      * toArray will return an empty array if no elements are set
      */
-	public function testToArrayWillReturnAnEmptyArrayIfNoElementsAreSet()
+    public function testToArrayWillReturnAnEmptyArrayIfNoElementsAreSet()
     {
         $Collection = new \MySQLExtractor\Common\Collection();
         $this->assertEquals(array(), $Collection->toArray());

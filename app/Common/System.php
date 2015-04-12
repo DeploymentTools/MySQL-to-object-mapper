@@ -31,4 +31,16 @@ class System
         }
         return new \DirectoryIterator($source);
     }
+
+    public static function getPDO($credentials)
+    {
+        if (!is_null(self::$mock)) {
+            return call_user_func_array(array(self::$mock, 'getPDO'), array($credentials));
+        }
+        return new \PDO(
+            'mysql:host=' . $credentials->host . ';dbname=' . $credentials->dbname,
+            $credentials->dbuser,
+            $credentials->dbpass
+        );
+    }
 }

@@ -25,14 +25,14 @@ class Application
     /**
      * Initializes the extractor using the input MySQL credentials and runs the scan.
      *
-     * @param $mysqlCredentials object {host,port,dbuser,dbpass,dbname}
+     * @param $mysqlCredentials object {host,dbuser,dbpass,dbname}
      * @throws InvalidPathException
      */
-//    public function processServer($mysqlCredentials)
-//    {
-//        $this->extractor = new Driver\Server($mysqlCredentials);
-//        $this->extractor->execute();
-//    }
+    public function processServer($mysqlCredentials)
+    {
+        $this->extractor = new Driver\Server($mysqlCredentials);
+        $this->extractor->execute();
+    }
 
     /**
      * For each extracted database, dump a JSON file with the detected structure.

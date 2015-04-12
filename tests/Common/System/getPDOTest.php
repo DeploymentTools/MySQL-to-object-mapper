@@ -3,7 +3,7 @@ namespace tests\Common\System;
 
 use MySQLExtractor\Common\System;
 
-class getDirectoryIteratorTest extends \PHPUnit_Framework_TestCase
+class getPDOTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
@@ -21,11 +21,16 @@ class getDirectoryIteratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testWhenMockingTheInternalMethodThenReturnMockedValue()
     {
-        $path = '/dir/to/path';
-        $expected = array('something');
+        $credentials = new \stdClass;
+        $credentials->host = 'localhost:3306';
+        $credentials->dbname = 'sample';
+        $credentials->dbuser = 'root';
+        $credentials->dbpass = '';
+
+        $expected = \Mockery::mock('\\PDO')->makePartial();
 
         $systemMock = \Mockery::mock('\\MySQLExtractor\\Common\\SystemMock')->makePartial();
-        $systemMock->shouldReceive('getDirectoryIterator')->with($path)->andReturn($expected);
+        $systemMock->shouldReceive('getPDO')->with($credentials)->andReturn($expected);
 
         $system = new System();
         $refObject = new \ReflectionObject($system);
@@ -33,17 +38,26 @@ class getDirectoryIteratorTest extends \PHPUnit_Framework_TestCase
         $refProperty->setAccessible(true);
         $refProperty->setValue($system, $systemMock);
 
-        $this->assertEquals($expected, $system::getDirectoryIterator($path));
+        $this->assertEquals($expected, $system::getPDO($credentials));
     }
 
     /**
      * when not mocking then return DirectoryIterator
      */
-    public function testWhenNotMockingThenReturnDirectoryIterator()
+    public function testWhenNotMockingThenReturnPDO()
     {
-        $system = new System();
-        $return = $system::getDirectoryIterator('/tmp');
+        $credentials = new \stdClass;
+        $credentials->host = 'localhost.real';
+        $credentials->dbname = 'sample';
+        $credentials->dbuser = 'root';
+        $credentials->dbpass = '';
 
-        $this->assertInstanceOf('\\DirectoryIterator', $return);
+        $system = new System();
+
+        try {
+            $return = $system::getPDO($credentials);
+        } catch (\PDOException $e) {
+            $this->assertEquals("SQLSTATE[HY000] [2005] Unknown MySQL server host 'localhost.real' (2)", $e->getMessage());
+        }
     }
 }

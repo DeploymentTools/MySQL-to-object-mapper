@@ -36,7 +36,7 @@ class executeTest extends \PHPUnit_Framework_TestCase
     /**
      * when input is not directory then add source files
      */
-	public function testWhenInputIsNotDirectoryThenAddSourceFiles()
+    public function testWhenInputIsNotDirectoryThenAddSourceFiles()
     {
         $DirectoryIterator = array();
         $Item = \Mockery::mock('FileIteratorItem')->makePartial();

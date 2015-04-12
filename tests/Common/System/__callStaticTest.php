@@ -19,7 +19,7 @@ class __callStaticTest extends \PHPUnit_Framework_TestCase
     /**
      * when mocking the internal method then return mocked value
      */
-	public function testWhenMockingTheInternalMethodThenReturnMockedValue()
+    public function testWhenMockingTheInternalMethodThenReturnMockedValue()
     {
         $systemMock = \Mockery::mock('\\MySQLExtractor\\Common\\SystemMock')->makePartial();
         $systemMock->shouldReceive('file_exists')->with('/invalid-folder/')->andReturn(true);
@@ -34,13 +34,13 @@ class __callStaticTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($system::file_exists('/invalid-folder/'));
     }
 
-	/**
-	 * when not mocking then use the internal method
-	 */
-	public function testWhenNotMockingThenUseTheInternalMethod()
-	{
+    /**
+     * when not mocking then use the internal method
+     */
+    public function testWhenNotMockingThenUseTheInternalMethod()
+    {
         $system = new System();
         $this->assertFalse($system::file_exists('/invalid-folder/'));
         $this->assertEquals($system::time(), time());
-	}
+    }
 }
