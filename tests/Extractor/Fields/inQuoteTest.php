@@ -24,10 +24,10 @@ class inQuoteTest extends \PHPUnit_Framework_TestCase
     public function providerQuoteFlags()
     {
         return array(
-            array(true, true, true),
-            array(true, false, true),
-            array(false, true, true),
-            array(false, false, false)
+            array(true, true, true, 'both quotes are on'),
+            array(true, false, true, 'at least one quote is on'),
+            array(false, true, true, 'at least one quote is on'),
+            array(false, false, false, 'both quotes are off')
         );
     }
 }
