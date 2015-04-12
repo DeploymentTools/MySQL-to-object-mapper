@@ -3,28 +3,28 @@ namespace tests\Extractor\Fields;
 
 class inQuoteTest extends \PHPUnit_Framework_TestCase
 {
-    protected $helper;
+    protected $testingHelper;
 
     public function setUp()
     {
-        $target = \Mockery::mock('\\MySQLExtractor\\Extractor\\Fields')->makePartial();
-        $this->helper = new \PHPUnitProtectedHelper($target);
+        $targetClass = \Mockery::mock('\\MySQLExtractor\\Extractor\\Fields')->makePartial();
+        $this->testingHelper = new \PHPUnitProtectedHelper($targetClass);
     }
 
     /**
      * when quote or double quote flag will be true then return true, else will return false
-     * @dataProvider quoteFlags
+     * @dataProvider providerQuoteFlags
      */
 	public function testWhenQuoteAndDoubleQuoteFlagWillBeTrueThenReturnTrueElseWillReturnFalse($inSingleQuote, $inDoubleQuote, $expected)
     {
-        $this->helper->setValue('inSingleQuote', $inSingleQuote);
-        $this->helper->setValue('inDoubleQuote', $inDoubleQuote);
+        $this->testingHelper->setValue('inSingleQuote', $inSingleQuote);
+        $this->testingHelper->setValue('inDoubleQuote', $inDoubleQuote);
 
-        $return = $this->helper->makeCall('inQuote');
+        $return = $this->testingHelper->makeCall('inQuote');
         $this->assertSame($expected, $return);
     }
 
-    public function quoteFlags()
+    public function providerQuoteFlags()
     {
         return array(
             array(true, true, true),
