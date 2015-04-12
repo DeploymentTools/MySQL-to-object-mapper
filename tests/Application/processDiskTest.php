@@ -26,7 +26,8 @@ class processDiskTest extends \PHPUnit_Framework_TestCase
           `parola` varchar(60) DEFAULT NULL,
           `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
           `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-          PRIMARY KEY (`id`)
+          PRIMARY KEY (`id`),
+          KEY `adresa` (`judet`,`localitate`,`strada`,`nr`)
         ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
         ";
 

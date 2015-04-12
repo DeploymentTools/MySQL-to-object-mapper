@@ -1,14 +1,14 @@
 <?php
 namespace tests\Extractor\Fields;
 
-class extractPrimaryKeyFromString extends \PHPUnit_Framework_TestCase
+class getPrimaryKeyFromStringTest extends \PHPUnit_Framework_TestCase
 {
     public function testWhenPrimaryKeyIsSetInStringThenExtractColumnValueAndReturnPrimaryKeyObject()
     {
         $tableExtractor = \Mockery::mock('\\MySQLExtractor\\Extractor\\Fields')->makePartial();
 
         $fieldStringLine = "PRIMARY KEY (`AuthorID`)";
-        $return = $tableExtractor::extractPrimaryKeyFromString($fieldStringLine);
+        $return = $tableExtractor::getPrimaryKeyFromString($fieldStringLine);
 
         $expectedObject = new \MySQLExtractor\Presentation\PrimaryKey();
         $expectedObject->Column = 'AuthorID';
@@ -21,7 +21,7 @@ class extractPrimaryKeyFromString extends \PHPUnit_Framework_TestCase
         $tableExtractor = \Mockery::mock('\\MySQLExtractor\\Extractor\\Fields')->makePartial();
 
         $fieldStringLine = "KEY (`AuthorID`)";
-        $return = $tableExtractor::extractPrimaryKeyFromString($fieldStringLine);
+        $return = $tableExtractor::getPrimaryKeyFromString($fieldStringLine);
 
         $this->assertNull($return);
     }

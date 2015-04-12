@@ -8,7 +8,7 @@ use MySQLExtractor\Extractor\Databases;
 class Disk extends Driver
 {
     protected $source;
-    protected $files;
+    protected $entries;
     protected $databases = array();
 
     public function __construct($path)
@@ -18,17 +18,17 @@ class Disk extends Driver
         }
 
         $this->source = $path;
-        $this->files = new Collection();
+        $this->entries = new Collection();
         $this->databaseExtractor = new Databases();
     }
 
     protected function appendSource($filename = null)
     {
         $filename = $this->source . ((is_null($filename)) ? '' : DIRECTORY_SEPARATOR . $filename);
-        $this->files->set($filename, System::file_get_contents($filename));
+        $this->entries->set($filename, System::file_get_contents($filename));
     }
 
-    public function execute()
+    private function prepareSourceEntries()
     {
         if (System::is_dir($this->source)) {
             foreach (new \DirectoryIterator($this->source) as $fileInfo) {
@@ -39,9 +39,14 @@ class Disk extends Driver
         } else {
             $this->appendSource();
         }
+    }
 
-        if ($this->files->count() > 0) {
-            $this->databases = $this->databaseExtractor->from($this->files)->get();
+    public function execute()
+    {
+        $this->prepareSourceEntries();
+
+        if ($this->entries->count() > 0) {
+            $this->databases = $this->databaseExtractor->from($this->entries)->get();
         } else {
             throw new InvalidSourceException("There were no input files found.", 1);
         }

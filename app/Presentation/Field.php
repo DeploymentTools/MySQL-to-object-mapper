@@ -9,4 +9,10 @@ class Field {
     public $Default;
     public $Comment;
     public $Autoincrement = false;
+
+    /**
+     * used for ENUM
+     * @var string[]
+     */
+    public $Values = array();
 }

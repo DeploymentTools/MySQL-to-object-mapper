@@ -107,32 +107,30 @@ class Fields {
         }
 
         $fieldsFragments = $this->extractElementFragments();
-        if (empty($fieldsFragments)) {
-            return false;
+        if (!empty($fieldsFragments)) {
+            foreach ($fieldsFragments as $fieldFragmentString) {
+                $this->fieldExtractor($fieldFragmentString);
+            }
+            return $this->tableObject;
         }
-
-        foreach ($fieldsFragments as $fieldFragmentString) {
-            $this->fieldExtractor($fieldFragmentString);
-        }
-
-        return $this->tableObject;
+        return false;
     }
 
     protected function fieldExtractor($fieldString)
     {
         $fieldString = trim($fieldString);
 
-        if ($primaryKey = self::extractPrimaryKeyFromString($fieldString)) {
+        if ($primaryKey = self::getPrimaryKeyFromString($fieldString)) {
             $this->tableObject->Keys[] = $primaryKey;
             return true;
         }
 
-        if ($key = self::extractKeyFromString($fieldString)) {
+        if ($key = self::getKeyFromString($fieldString)) {
             $this->tableObject->Keys[] = $key;
             return true;
         }
 
-        if ($field = self::extractFieldFromString($fieldString)) {
+        if ($field = self::getFieldFromString($fieldString)) {
             $this->tableObject->Fields[] = $field;
             return true;
         }
@@ -140,11 +138,7 @@ class Fields {
         return false;
     }
 
-    /**
-     * @param $fieldString
-     * @return PrimaryKey
-     */
-    public static function extractPrimaryKeyFromString($fieldString)
+    public static function getPrimaryKeyFromString($fieldString)
     {
         $pattern = self::$patterns['primaryKey'];
         preg_match($pattern, $fieldString, $matches);
@@ -155,11 +149,7 @@ class Fields {
         }
     }
 
-    /**
-     * @param $fieldString
-     * @return Key
-     */
-    public static function extractKeyFromString($fieldString)
+    public static function getKeyFromString($fieldString)
     {
         $pattern = self::$patterns['key'];
         preg_match($pattern, $fieldString, $matches);
@@ -183,7 +173,7 @@ class Fields {
         }
     }
 
-    public static function extractFieldLength($fieldString, $field)
+    public static function extractFieldType($fieldString, $field)
     {
         $lengthValuePattern = self::$patterns['lengthValue'];
         preg_match($lengthValuePattern, $fieldString, $matchesType);
@@ -191,6 +181,30 @@ class Fields {
             $field->Type = strtoupper($matchesType[2]);
             if (isset($matchesType[3]) && !empty($matchesType[3])) {
                 $field->Length = (int)$matchesType[3];
+            }
+
+            if ($field->Type == 'ENUM') {
+                self::extractFieldEnumValues($fieldString, $field);
+            }
+        }
+    }
+
+    public static function extractFieldEnumValues($fieldString, $field)
+    {
+        preg_match('/^`([\w\_]+)`\sENUM\(/i', $fieldString, $matches);
+        if ($matches) {
+            $followingString = trim(substr($fieldString, strlen($matches[0])));
+            $sep = substr($followingString, 0, 1);
+            $sepQuote = preg_quote($sep);
+
+            $patternSeparators = '/' . $sepQuote . '([\w\_\-\,\s\'\"]+)' . $sepQuote . '\)/';
+            preg_match($patternSeparators, $followingString, $matches);
+
+            if ($matches) {
+                $pattern = '/' . $sepQuote . '([\s\,]+)' . $sepQuote .'/';
+                $separator = $sep.','.$sep;
+                $matchingRaw = preg_replace($pattern, $separator, $matches[1]);
+                $field->Values = explode($separator, $matchingRaw);
             }
         }
     }
@@ -219,7 +233,7 @@ class Fields {
         $field->Null = !(strpos(strtoupper($fieldString), 'NOT NULL') > 0);
     }
 
-    public static function detectFieldName($fieldString)
+    public static function initField($fieldString)
     {
         $fieldNamePattern = self::$patterns['fieldName'];
         preg_match($fieldNamePattern, $fieldString, $matches);
@@ -231,11 +245,11 @@ class Fields {
         return false;
     }
 
-    public static function extractFieldFromString($fieldString)
+    public static function getFieldFromString($fieldString)
     {
-        $field = self::detectFieldName($fieldString);
+        $field = self::initField($fieldString);
         if ($field) {
-            self::extractFieldLength($fieldString, $field);
+            self::extractFieldType($fieldString, $field);
             self::extractFieldDefault($fieldString, $field);
             self::extractFieldAutoincrement($fieldString, $field);
             self::extractFieldNull($fieldString, $field);

@@ -81,11 +81,11 @@ class Tables
 
     protected function checkQuotes()
     {
-        if (!$this->inComment()) {
-            if (($this->currentChar == "'") && ($this->previousChar != '\\')) {
+        if (!$this->inComment() && ($this->previousChar != '\\')) {
+            if ($this->currentChar == "'") {
                 $this->inSingleQuote = !$this->inSingleQuote;
-            }
-            if (($this->currentChar == '"') && ($this->previousChar != '\\')) {
+
+            } else if ($this->currentChar == '"') {
                 $this->inDoubleQuote = !$this->inDoubleQuote;
             }
         }
