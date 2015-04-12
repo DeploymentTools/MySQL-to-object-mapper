@@ -3,13 +3,11 @@ namespace tests\Extractor\Tables;
 
 class checkQuotesTest extends \PHPUnit_Framework_TestCase
 {
-    protected $tableExtractor;
-    protected $refObject;
+    protected $helper;
 
     public function setUp()
     {
-        $this->tableExtractor = new \MySQLExtractor\Extractor\Tables();
-        $this->refObject = new \ReflectionObject($this->tableExtractor);
+        $this->helper = new \PHPUnitProtectedHelper(new \MySQLExtractor\Extractor\Tables());
     }
 
     /**
@@ -23,15 +21,14 @@ class checkQuotesTest extends \PHPUnit_Framework_TestCase
         $expectedSingleQuote,
         $expectedDoubleQuote
     ) {
+        $this->helper->setValue('inSingleQuote', $inSingleQuote);
+        $this->helper->setValue('inDoubleQuote', $inDoubleQuote);
+        $this->helper->setValue('previousChar', ',');
+        $this->helper->setValue('currentChar', $char);
 
-        $this->setValue('inSingleQuote', $inSingleQuote);
-        $this->setValue('inDoubleQuote', $inDoubleQuote);
-        $this->setValue('previousChar', ',');
-        $this->setValue('currentChar', $char);
-
-        $this->makeCall();
-        $this->assertSame($expectedSingleQuote, $this->getValue('inSingleQuote'));
-        $this->assertSame($expectedDoubleQuote, $this->getValue('inDoubleQuote'));
+        $this->helper->makeCall('checkQuotes');
+        $this->assertSame($expectedSingleQuote, $this->helper->getValue('inSingleQuote'));
+        $this->assertSame($expectedDoubleQuote, $this->helper->getValue('inDoubleQuote'));
     }
 
     /**
@@ -46,14 +43,14 @@ class checkQuotesTest extends \PHPUnit_Framework_TestCase
         $ignoreExpectedDoubleQuote
     ) {
 
-        $this->setValue('inSingleQuote', $inSingleQuote);
-        $this->setValue('inDoubleQuote', $inDoubleQuote);
-        $this->setValue('previousChar', '\\');
-        $this->setValue('currentChar', $char);
+        $this->helper->setValue('inSingleQuote', $inSingleQuote);
+        $this->helper->setValue('inDoubleQuote', $inDoubleQuote);
+        $this->helper->setValue('previousChar', '\\');
+        $this->helper->setValue('currentChar', $char);
 
-        $this->makeCall();
-        $this->assertSame($inSingleQuote, $this->getValue('inSingleQuote'));
-        $this->assertSame($inDoubleQuote, $this->getValue('inDoubleQuote'));
+        $this->helper->makeCall('checkQuotes');
+        $this->assertSame($inSingleQuote, $this->helper->getValue('inSingleQuote'));
+        $this->assertSame($inDoubleQuote, $this->helper->getValue('inDoubleQuote'));
     }
 
     public function sampleQuotes()
@@ -64,26 +61,6 @@ class checkQuotesTest extends \PHPUnit_Framework_TestCase
             array(true, true, '"', true, false),
             array(true, true, "'", false, true)
         );
-    }
-
-    protected function makeCall()
-    {
-        $class = new \ReflectionClass(get_class($this->tableExtractor));
-        $method = $class->getMethod('checkQuotes');
-        $method->setAccessible(true);
-        return $method->invokeArgs($this->tableExtractor, array());
-    }
-
-    protected function getValue($attribute)
-    {
-        return \PHPUnit_Framework_Assert::readAttribute($this->tableExtractor, $attribute);
-    }
-
-    protected function setValue($attribute, $value)
-    {
-        $refProperty = $this->refObject->getProperty($attribute);
-        $refProperty->setAccessible(true);
-        $refProperty->setValue($this->tableExtractor, $value);
     }
 }
 

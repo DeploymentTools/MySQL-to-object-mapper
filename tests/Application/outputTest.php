@@ -14,17 +14,7 @@ class outputTest extends \PHPUnit_Framework_TestCase
      */
     public function testWhenOutputFolderDoesNotExistThenThrowInvalidPathException()
     {
-        $systemMock = \Mockery::mock('\\MySQLExtractor\\Common\\SystemMock')->makePartial();
-        $systemMock->shouldReceive('file_exists')->with('/invalid-folder/')->andReturn(false);
-        $systemMock->shouldReceive('is_dir')->with('/invalid-folder/')->andReturn(false);
-
-        $system = new System();
-
-        $refObject = new \ReflectionObject($system);
-        $refProperty = $refObject->getProperty('mock');
-        $refProperty->setAccessible(true);
-        $refProperty->setValue($system, $systemMock);
-
+        $this->setupSystemMock(false, false, '/invalid-folder/');
         $worker = new Application();
 
         try {
@@ -41,17 +31,7 @@ class outputTest extends \PHPUnit_Framework_TestCase
      */
     public function testWhenOutputFolderExistsButIsNotAFolderThenThrowInvalidPathException()
     {
-        $systemMock = \Mockery::mock('\\MySQLExtractor\\Common\\SystemMock')->makePartial();
-        $systemMock->shouldReceive('file_exists')->with('/file-output')->andReturn(true);
-        $systemMock->shouldReceive('is_dir')->with('/file-output')->andReturn(false);
-
-        $system = new System();
-
-        $refObject = new \ReflectionObject($system);
-        $refProperty = $refObject->getProperty('mock');
-        $refProperty->setAccessible(true);
-        $refProperty->setValue($system, $systemMock);
-
+        $this->setupSystemMock(true, false, '/file-output');
         $worker = new Application();
 
         try {
@@ -68,17 +48,7 @@ class outputTest extends \PHPUnit_Framework_TestCase
      */
     public function testWhenOutputExistsAndIsAFolderThenWriteContentForAllDatabases()
     {
-        $systemMock = \Mockery::mock('\\MySQLExtractor\\Common\\SystemMock')->makePartial();
-        $systemMock->shouldReceive('file_exists')->with('/valid-output')->andReturn(true);
-        $systemMock->shouldReceive('is_dir')->with('/valid-output')->andReturn(true);
-
-        $system = new System();
-
-        $refObject = new \ReflectionObject($system);
-        $refProperty = $refObject->getProperty('mock');
-        $refProperty->setAccessible(true);
-        $refProperty->setValue($system, $systemMock);
-
+        $systemMock = $this->setupSystemMock(true, true, '/valid-output');
         $worker = new Application();
 
         $databases = array(
@@ -104,5 +74,21 @@ class outputTest extends \PHPUnit_Framework_TestCase
 
         $response = $worker->output('/valid-output');
         $this->assertTrue($response); // asserts are made by mockery's shouldReceive
+    }
+
+    protected function setupSystemMock($file_exists, $is_dir, $path)
+    {
+        $systemMock = \Mockery::mock('\\MySQLExtractor\\Common\\SystemMock')->makePartial();
+        $systemMock->shouldReceive('file_exists')->with($path)->andReturn($file_exists);
+        $systemMock->shouldReceive('is_dir')->with($path)->andReturn($is_dir);
+
+        $system = new System();
+
+        $refObject = new \ReflectionObject($system);
+        $refProperty = $refObject->getProperty('mock');
+        $refProperty->setAccessible(true);
+        $refProperty->setValue($system, $systemMock);
+
+        return $systemMock;
     }
 }

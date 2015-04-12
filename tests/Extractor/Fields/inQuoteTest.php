@@ -3,29 +3,24 @@ namespace tests\Extractor\Fields;
 
 class inQuoteTest extends \PHPUnit_Framework_TestCase
 {
+    protected $helper;
+
+    public function setUp()
+    {
+        $target = \Mockery::mock('\\MySQLExtractor\\Extractor\\Fields')->makePartial();
+        $this->helper = new \PHPUnitProtectedHelper($target);
+    }
+
     /**
      * when quote or double quote flag will be true then return true, else will return false
      * @dataProvider quoteFlags
      */
 	public function testWhenQuoteAndDoubleQuoteFlagWillBeTrueThenReturnTrueElseWillReturnFalse($inSingleQuote, $inDoubleQuote, $expected)
     {
-        $fieldExtractor = \Mockery::mock('\\MySQLExtractor\\Extractor\\Fields')->makePartial();
+        $this->helper->setValue('inSingleQuote', $inSingleQuote);
+        $this->helper->setValue('inDoubleQuote', $inDoubleQuote);
 
-        $refObject = new \ReflectionObject($fieldExtractor);
-
-        $refProperty = $refObject->getProperty('inSingleQuote');
-        $refProperty->setAccessible(true);
-        $refProperty->setValue($fieldExtractor, $inSingleQuote);
-
-        $refProperty = $refObject->getProperty('inDoubleQuote');
-        $refProperty->setAccessible(true);
-        $refProperty->setValue($fieldExtractor, $inDoubleQuote);
-
-        $class = new \ReflectionClass(get_class($fieldExtractor));
-        $method = $class->getMethod('inQuote');
-        $method->setAccessible(true);
-        $return = $method->invokeArgs($fieldExtractor, array());
-
+        $return = $this->helper->makeCall('inQuote');
         $this->assertSame($expected, $return);
     }
 
