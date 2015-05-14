@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/bogdananton/MySQL-to-object-mapper.svg)](https://travis-ci.org/bogdananton/MySQL-to-object-mapper) [![Code Climate](https://codeclimate.com/github/bogdananton/MySQL-to-object-mapper/badges/gpa.svg)](https://codeclimate.com/github/bogdananton/MySQL-to-object-mapper) [![Coverage Status](https://coveralls.io/repos/bogdananton/MySQL-to-object-mapper/badge.svg)](https://coveralls.io/r/bogdananton/MySQL-to-object-mapper)
+[![Build Status](https://travis-ci.org/DeploymentTools/MySQL-to-object-mapper.svg)](https://travis-ci.org/DeploymentTools/MySQL-to-object-mapper) [![Code Climate](https://codeclimate.com/github/DeploymentTools/MySQL-to-object-mapper/badges/gpa.svg)](https://codeclimate.com/github/bogdananton/MySQL-to-object-mapper) [![Coverage Status](https://coveralls.io/repos/DeploymentTools/MySQL-to-object-mapper/badge.svg)](https://coveralls.io/r/DeploymentTools/MySQL-to-object-mapper)
 
 Scans MySQL structure and converts it into PHP objects.
 Using MySQL file dumps or a server as input.
 
-Download the `phar` file from the [latest release page](https://github.com/bogdananton/MySQL-to-object-mapper/releases/latest).
+Download the `phar` file from the [latest release page](https://github.com/DeploymentTools/MySQL-to-object-mapper/releases/latest).
 
 ```
 Usage: php m2om.phar [-d|-s] [input-source] -o [output-path]
