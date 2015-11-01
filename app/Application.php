@@ -51,7 +51,7 @@ class Application
         }
 
         foreach ($databases as $database) {
-            $filename = $path . DIRECTORY_SEPARATOR . $database->Name . '.json';
+            $filename = $path . DIRECTORY_SEPARATOR . $database->Name . '-' . date('Y-m-d') . '-' . time() . '.json';
             System::file_put_contents($filename, json_encode($database, JSON_PRETTY_PRINT));
         }
 

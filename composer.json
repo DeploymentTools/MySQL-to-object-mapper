@@ -3,7 +3,8 @@
     "description": "MySQL-to-object-mapper outputs PHP objects from SQL dumps or servers",
     "license": "MIT",
     "require": {
-      "php": ">=5.4.0"
+      "php": ">=5.4.0",
+      "symfony/console": "2.7.*"
     },
     "require-dev": {
       "mockery/mockery": "*",
