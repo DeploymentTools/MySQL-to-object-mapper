@@ -117,12 +117,12 @@ class getTableTest extends \PHPUnit_Framework_TestCase
             $resultingValues[$field->Id] = $field->Default;
         }
 
-        static::assertSame(null, $resultingValues['id']);
-        static::assertSame(null, $resultingValues['companieID']);
-        static::assertSame('1', $resultingValues['pozitii']);
+        static::assertSame(0, $resultingValues['id']); // because of a cast (type is integer)
+        static::assertSame(0, $resultingValues['companieID']); // because of a cast (type is integer)
+        static::assertSame(1, $resultingValues['pozitii']); // because of a cast (type is integer)
         static::assertSame(null, $resultingValues['program_lucru']);
         static::assertSame('determinata', $resultingValues['durata_contract']);
-        static::assertSame('0', $resultingValues['profil_scoala_primara']);
+        static::assertSame(0, $resultingValues['profil_scoala_primara']); // because of a cast (type is integer)
         static::assertSame('Bucharest', $resultingValues['persoanacontact_adresa_localitate']);
         static::assertSame('CURRENT_TIMESTAMP', $resultingValues['created_at']);
         static::assertSame('0000-00-00 00:00:00', $resultingValues['updated_at']);

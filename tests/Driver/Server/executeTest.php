@@ -40,7 +40,7 @@ class extractRemoteDatabasesTest extends \PHPUnit_Framework_TestCase
         $this->mysqlCredentials->host = 'mysql.host';
         $this->mysqlCredentials->dbuser = 'user';
         $this->mysqlCredentials->dbpass = 'pass';
-        $this->mysqlCredentials->dbname = 'dbname';
+        $this->mysqlCredentials->dbname = 'database1';
 
         $this->PDOMock = \Mockery::mock('\\PDOMock')->makePartial();
 
@@ -106,8 +106,7 @@ class extractRemoteDatabasesTest extends \PHPUnit_Framework_TestCase
 
         $expected = array(
             'database1.table1.sql' => $this->table['table_1'],
-            'database1.table2.sql' => $this->table['table_2'],
-            'database2.table3.sql' => $this->table['table_3']
+            'database1.table2.sql' => $this->table['table_2']
         );
 
         $entries = $this->objectHelper->getValue('entries');
@@ -126,10 +125,9 @@ class extractRemoteDatabasesTest extends \PHPUnit_Framework_TestCase
         $extractor = $helper->getValue('extractor');
 
         $databases = $extractor->databases();
-        $this->assertEquals(2, count($databases));
+        $this->assertEquals(1, count($databases)); // will filter based on the mysqlCredentials->dbname
 
         $this->assertInstanceOf('\\MySQLExtractor\\Presentation\\Database', $databases['database1']);
-        $this->assertInstanceOf('\\MySQLExtractor\\Presentation\\Database', $databases['database2']);
 	}
 
     /**
@@ -137,6 +135,7 @@ class extractRemoteDatabasesTest extends \PHPUnit_Framework_TestCase
      */
     public function testCallingTheMethodWillThrowExceptionIfNoEntriesAreFound()
     {
+        $this->mysqlCredentials->dbname = 'none-existing-database';
         $object = new ServerUnderTest($this->mysqlCredentials);
 
         try {
