@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Check environment" default="main">
+    <target name="main">
+        <phingcall target="build-bin" />
+    </target>
+
+    <target name="build-bin">
+        <exec command="wget https://github.com/box-project/box2/releases/download/2.5.3/box-2.5.3.phar" passthru="true" />
+        <delete file="bin/mysqltool.phar" quiet="true" />
+        <exec command="php box-2.5.3.phar build -c compile" />
+        <delete file="box-2.5.3.phar" />
+    </target>
+</project>

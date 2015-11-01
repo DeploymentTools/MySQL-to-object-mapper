@@ -1,0 +1,18 @@
+{
+    "chmod": "0755",
+    "directories": [
+        "app",
+        "bin"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": ["tests", "example", ".git"],
+            "in": "vendor"
+        }
+    ],
+    "git-version": "1.0",
+    "main": "bin/console.php",
+    "output": "bin/mysqltool.phar",
+    "stub": true
+}
