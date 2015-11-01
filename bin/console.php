@@ -7,7 +7,7 @@ include_once __DIR__ . '/../vendor/autoload.php';
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-$app = new \Symfony\Component\Console\Application('MySQL Extractor', '1.0.0');
+$app = new \Symfony\Component\Console\Application('MySQL Extractor', '1.0.2');
 
 // reset
 $app->setDefinition(
