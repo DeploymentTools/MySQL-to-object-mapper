@@ -34,7 +34,7 @@ class Tables
     {
         $this->reset();
         $this->tables = new Collection();
-        $this->tableContentsLines = explode("\n", $stringContents . "\n;");
+        $this->tableContentsLines = explode("\n", addslashes($stringContents) . "\n;");
         return $this;
     }
 

@@ -18,6 +18,19 @@ class getFieldFromStringTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * When field default in string zero then Default will be int or string zero.
+     */
+    public function testWhenFieldDefaultInStringZeroThenDefaultWillBeIntOrStringZero()
+    {
+        $fieldExtractor = \Mockery::mock('\\MySQLExtractor\\Extractor\\Fields')->makePartial();
+
+        $fieldStringLine = "`comment_id` bigint(20) unsigned NOT NULL DEFAULT '0',";
+        $field = $fieldExtractor::getFieldFromString($fieldStringLine);
+
+        $this->assertEquals('0', $field->Default);
+    }
+
+    /**
      * when field is ENUM then catch ENUM values as field values
      */
     public function testWhenFieldIsEnumThenCatchEnumValuesAsFieldValues()

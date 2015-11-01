@@ -11,16 +11,18 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "comment_id",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "meta_key",
@@ -29,7 +31,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "meta_value",
@@ -38,7 +41,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -69,16 +73,18 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "comment_post_ID",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_author",
@@ -87,52 +93,58 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_author_email",
                     "Type": "VARCHAR",
                     "Length": 100,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_author_url",
                     "Type": "VARCHAR",
                     "Length": 200,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_author_IP",
                     "Type": "VARCHAR",
                     "Length": 100,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_date",
                     "Type": "DATETIME",
                     "Length": null,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0000-00-00 00:00:00",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_date_gmt",
                     "Type": "DATETIME",
                     "Length": null,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0000-00-00 00:00:00",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_content",
@@ -141,61 +153,68 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_karma",
                     "Type": "INT",
                     "Length": 11,
                     "Null": false,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_approved",
                     "Type": "VARCHAR",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "1",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_agent",
                     "Type": "VARCHAR",
                     "Length": 255,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_type",
                     "Type": "VARCHAR",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_parent",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "user_id",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -239,97 +258,108 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "link_url",
                     "Type": "VARCHAR",
                     "Length": 255,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_name",
                     "Type": "VARCHAR",
                     "Length": 255,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_image",
                     "Type": "VARCHAR",
                     "Length": 255,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_target",
                     "Type": "VARCHAR",
                     "Length": 25,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_description",
                     "Type": "VARCHAR",
                     "Length": 255,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_visible",
                     "Type": "VARCHAR",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "Y",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_owner",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "1",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_rating",
                     "Type": "INT",
                     "Length": 11,
                     "Null": false,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_updated",
                     "Type": "DATETIME",
                     "Length": null,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0000-00-00 00:00:00",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_rel",
                     "Type": "VARCHAR",
                     "Length": 255,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_notes",
@@ -338,16 +368,18 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "link_rss",
                     "Type": "VARCHAR",
                     "Length": 255,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -372,16 +404,18 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "option_name",
                     "Type": "VARCHAR",
                     "Length": 64,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "option_value",
@@ -390,16 +424,18 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "autoload",
                     "Type": "VARCHAR",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "yes",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -424,16 +460,18 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "post_id",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "meta_key",
@@ -442,7 +480,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "meta_value",
@@ -451,7 +490,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -482,34 +522,38 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "post_author",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_date",
                     "Type": "DATETIME",
                     "Length": null,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0000-00-00 00:00:00",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_date_gmt",
                     "Type": "DATETIME",
                     "Length": null,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0000-00-00 00:00:00",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_content",
@@ -518,7 +562,8 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_title",
@@ -527,7 +572,8 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_excerpt",
@@ -536,52 +582,58 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_status",
                     "Type": "VARCHAR",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "publish",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_status",
                     "Type": "VARCHAR",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "open",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "ping_status",
                     "Type": "VARCHAR",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "open",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_password",
                     "Type": "VARCHAR",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_name",
                     "Type": "VARCHAR",
                     "Length": 200,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "to_ping",
@@ -590,7 +642,8 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "pinged",
@@ -599,25 +652,28 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_modified",
                     "Type": "DATETIME",
                     "Length": null,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0000-00-00 00:00:00",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_modified_gmt",
                     "Type": "DATETIME",
                     "Length": null,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0000-00-00 00:00:00",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_content_filtered",
@@ -626,61 +682,68 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_parent",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "guid",
                     "Type": "VARCHAR",
                     "Length": 255,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "menu_order",
                     "Type": "INT",
                     "Length": 11,
                     "Null": false,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_type",
                     "Type": "VARCHAR",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "post",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "post_mime_type",
                     "Type": "VARCHAR",
                     "Length": 100,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "comment_count",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -724,27 +787,30 @@
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "term_taxonomy_id",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "term_order",
                     "Type": "INT",
                     "Length": 11,
                     "Null": false,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -766,25 +832,28 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "term_id",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "taxonomy",
                     "Type": "VARCHAR",
                     "Length": 32,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "description",
@@ -793,25 +862,28 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "parent",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "count",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -843,34 +915,38 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "name",
                     "Type": "VARCHAR",
                     "Length": 200,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "slug",
                     "Type": "VARCHAR",
                     "Length": 200,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "term_group",
                     "Type": "BIGINT",
                     "Length": 10,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -901,16 +977,18 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "user_id",
                     "Type": "BIGINT",
                     "Length": 20,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "meta_key",
@@ -919,7 +997,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "meta_value",
@@ -928,7 +1007,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -959,88 +1039,98 @@
                     "Null": false,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "user_login",
                     "Type": "VARCHAR",
                     "Length": 60,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "user_pass",
                     "Type": "VARCHAR",
                     "Length": 64,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "user_nicename",
                     "Type": "VARCHAR",
                     "Length": 50,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "user_email",
                     "Type": "VARCHAR",
                     "Length": 100,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "user_url",
                     "Type": "VARCHAR",
                     "Length": 100,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "user_registered",
                     "Type": "DATETIME",
                     "Length": null,
                     "Null": false,
-                    "Default": null,
+                    "Default": "0000-00-00 00:00:00",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "user_activation_key",
                     "Type": "VARCHAR",
                     "Length": 60,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "user_status",
                     "Type": "INT",
                     "Length": 11,
                     "Null": false,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "display_name",
                     "Type": "VARCHAR",
                     "Length": 250,
                     "Null": false,
-                    "Default": null,
+                    "Default": "",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [

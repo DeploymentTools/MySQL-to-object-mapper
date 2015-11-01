@@ -1,5 +1,6 @@
 <?php
-require_once(realpath(dirname(__FILE__) . '/../vendor/autoload.php'));
+$autoload = __DIR__ . '/../vendor/autoload.php';
+file_exists($autoload) ? require_once $autoload : die('Run composer install or check that [' . $autoload . '] exists.');
 
 class PHPUnitProtectedHelper
 {

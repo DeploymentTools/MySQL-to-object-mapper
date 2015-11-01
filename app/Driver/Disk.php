@@ -38,12 +38,21 @@ class Disk extends Driver
         }
     }
 
-    public function execute()
+    public function execute($databaseName = '')
     {
         $this->prepareSourceEntries();
 
         if ($this->entries->count() > 0) {
             $this->databases = $this->databaseExtractor->from($this->entries)->get();
+
+            if ($databaseName !== '') {
+                foreach ($this->databases as $index => $db) {
+                    if ($index !== $databaseName) {
+                        unset($this->databases[$index]);
+                    }
+                }
+            }
+
         } else {
             throw new InvalidSourceException("There were no input files found.", 1);
         }

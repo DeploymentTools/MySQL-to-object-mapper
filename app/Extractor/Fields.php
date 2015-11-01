@@ -4,7 +4,8 @@ use MySQLExtractor\Presentation\Field;
 use MySQLExtractor\Presentation\Key;
 use MySQLExtractor\Presentation\PrimaryKey;
 
-class Fields {
+class Fields
+{
     protected $tableObject; // target
     protected $stringContents;
     protected $elementFragments = array();
@@ -12,7 +13,6 @@ class Fields {
         'table' => '/CREATE\sTABLE\s(IF NOT EXISTS)?\s?`?([\w]+)`?/',
         'primaryKey' => '/PRIMARY\sKEY\s\(`([\w]+)`\)/',
         'key' => '/KEY\s`([\w\_]+)`\s?\((.*)\)/',
-        'defaultValue' => '/DEFAULT\s\'(.*)\'/',
         'lengthValue' => '/^`([\w]+)`\s([\w]+)\(?([0-9]+)?\)?/',
         'fieldName' => '/^`([\w]+)`\s?(([\w]+)\(?([\d]+)?\)?)?/'
     );
@@ -211,13 +211,11 @@ class Fields {
 
     public static function extractFieldDefault($fieldString, $field)
     {
-        $defaultValuePattern = self::$patterns['defaultValue'];
-        preg_match($defaultValuePattern, $fieldString, $matchesDefault);
-        if ($matchesDefault) {
-            if (strpos($matchesDefault[1], '\'')) {
-                $matchesDefault[1] = substr($matchesDefault[1], 0, strpos($matchesDefault[1], '\''));
-            }
-            $field->Default = empty($matchesDefault[1]) ? "" : $matchesDefault[1];
+        $stringUtils = new String(stripslashes($fieldString));
+        $field->Default = String::getFirstChunk($stringUtils->substr('/DEFAULT\s/'));
+
+        if ($field->Type === 'INT') {
+            $field->Default = (int)$field->Default;
         }
     }
 

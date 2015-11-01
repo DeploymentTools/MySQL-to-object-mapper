@@ -2,151 +2,6 @@
     "Name": "project_mooc",
     "Tables": [
         {
-            "Name": "companii",
-            "Fields": [
-                {
-                    "Id": "id",
-                    "Type": "INT",
-                    "Length": 11,
-                    "Null": false,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": true
-                },
-                {
-                    "Id": "nume",
-                    "Type": "VARCHAR",
-                    "Length": 255,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "url",
-                    "Type": "VARCHAR",
-                    "Length": 100,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "domeniu",
-                    "Type": "VARCHAR",
-                    "Length": 100,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "email",
-                    "Type": "VARCHAR",
-                    "Length": 255,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "telefon",
-                    "Type": "VARCHAR",
-                    "Length": 100,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "judet",
-                    "Type": "VARCHAR",
-                    "Length": 100,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "localitate",
-                    "Type": "VARCHAR",
-                    "Length": 100,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "strada",
-                    "Type": "VARCHAR",
-                    "Length": 255,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "nr",
-                    "Type": "VARCHAR",
-                    "Length": 20,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "reprezentant",
-                    "Type": "VARCHAR",
-                    "Length": 255,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "username",
-                    "Type": "VARCHAR",
-                    "Length": 255,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "parola",
-                    "Type": "VARCHAR",
-                    "Length": 60,
-                    "Null": true,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "created_at",
-                    "Type": "TIMESTAMP",
-                    "Length": null,
-                    "Null": false,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                },
-                {
-                    "Id": "updated_at",
-                    "Type": "TIMESTAMP",
-                    "Length": null,
-                    "Null": false,
-                    "Default": null,
-                    "Comment": null,
-                    "Autoincrement": false
-                }
-            ],
-            "Keys": [
-                {
-                    "Column": "id"
-                }
-            ]
-        },
-        {
             "Name": "anunturi_angajare",
             "Fields": [
                 {
@@ -154,18 +9,20 @@
                     "Type": "INT",
                     "Length": 11,
                     "Null": false,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": true
+                    "Autoincrement": true,
+                    "Values": []
                 },
                 {
                     "Id": "companieID",
                     "Type": "INT",
                     "Length": 11,
                     "Null": true,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "denumire",
@@ -174,16 +31,18 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "pozitii",
                     "Type": "INT",
                     "Length": 3,
                     "Null": true,
-                    "Default": null,
+                    "Default": 1,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "program_lucru",
@@ -192,7 +51,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "durata_contract",
@@ -201,7 +61,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "descriere",
@@ -210,52 +71,58 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "profil_scoala_primara",
                     "Type": "INT",
                     "Length": 1,
                     "Null": true,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "profil_scoala_profesionala",
                     "Type": "INT",
                     "Length": 1,
                     "Null": true,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "profil_liceu",
                     "Type": "INT",
                     "Length": 1,
                     "Null": true,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "profil_facultate",
                     "Type": "INT",
                     "Length": 1,
                     "Null": true,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "profil_postuniversitar",
                     "Type": "INT",
                     "Length": 1,
                     "Null": true,
-                    "Default": null,
+                    "Default": 0,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "cerinte",
@@ -264,7 +131,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "avangaje_oferite",
@@ -273,25 +141,28 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "persoanacontact_nume",
                     "Type": "VARCHAR",
                     "Length": 255,
                     "Null": true,
-                    "Default": null,
+                    "Default": "-Fullname-",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "persoanacontact_telefon",
                     "Type": "VARCHAR",
                     "Length": 30,
                     "Null": true,
-                    "Default": null,
+                    "Default": "555-000-222",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "persoanacontact_adresa_localitate",
@@ -300,7 +171,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "persoanacontact_adresa_strada",
@@ -309,7 +181,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "persoanacontact_adresa_nr",
@@ -318,7 +191,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "data_angajare",
@@ -327,7 +201,8 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "data_expirare",
@@ -336,25 +211,28 @@
                     "Null": true,
                     "Default": null,
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "created_at",
                     "Type": "TIMESTAMP",
                     "Length": null,
                     "Null": false,
-                    "Default": null,
+                    "Default": "CURRENT_TIMESTAMP",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 },
                 {
                     "Id": "updated_at",
                     "Type": "TIMESTAMP",
                     "Length": null,
                     "Null": false,
-                    "Default": " COMMENT ",
+                    "Default": "0000-00-00 00:00:00",
                     "Comment": null,
-                    "Autoincrement": false
+                    "Autoincrement": false,
+                    "Values": []
                 }
             ],
             "Keys": [
@@ -382,6 +260,166 @@
                     "Columns": [
                         "pozitii"
                     ]
+                }
+            ]
+        },
+        {
+            "Name": "companii",
+            "Fields": [
+                {
+                    "Id": "id",
+                    "Type": "INT",
+                    "Length": 11,
+                    "Null": false,
+                    "Default": 0,
+                    "Comment": null,
+                    "Autoincrement": true,
+                    "Values": []
+                },
+                {
+                    "Id": "nume",
+                    "Type": "VARCHAR",
+                    "Length": 255,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "url",
+                    "Type": "VARCHAR",
+                    "Length": 100,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "domeniu",
+                    "Type": "VARCHAR",
+                    "Length": 100,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "email",
+                    "Type": "VARCHAR",
+                    "Length": 255,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "telefon",
+                    "Type": "VARCHAR",
+                    "Length": 100,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "judet",
+                    "Type": "VARCHAR",
+                    "Length": 100,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "localitate",
+                    "Type": "VARCHAR",
+                    "Length": 100,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "strada",
+                    "Type": "VARCHAR",
+                    "Length": 255,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "nr",
+                    "Type": "VARCHAR",
+                    "Length": 20,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "reprezentant",
+                    "Type": "VARCHAR",
+                    "Length": 255,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "username",
+                    "Type": "VARCHAR",
+                    "Length": 255,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "parola",
+                    "Type": "VARCHAR",
+                    "Length": 60,
+                    "Null": true,
+                    "Default": null,
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "created_at",
+                    "Type": "TIMESTAMP",
+                    "Length": null,
+                    "Null": false,
+                    "Default": "CURRENT_TIMESTAMP",
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                },
+                {
+                    "Id": "updated_at",
+                    "Type": "TIMESTAMP",
+                    "Length": null,
+                    "Null": false,
+                    "Default": "0000-00-00 00:00:00",
+                    "Comment": null,
+                    "Autoincrement": false,
+                    "Values": []
+                }
+            ],
+            "Keys": [
+                {
+                    "Column": "id"
                 }
             ]
         }

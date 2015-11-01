@@ -14,12 +14,13 @@ class Application
      * Initializes the extractor using the input path and runs the scan.
      *
      * @param $path Input source of SQL dumps that will be scanned.
+     * @param string $databaseName Set this to filter a single database from the extracted results.
      * @throws InvalidPathException
      */
-    public function processDisk($path)
+    public function processDisk($path, $databaseName = '')
     {
         $this->extractor = new Driver\Disk($path);
-        $this->extractor->execute();
+        $this->extractor->execute($databaseName);
     }
 
     /**
@@ -31,7 +32,7 @@ class Application
     public function processServer($mysqlCredentials)
     {
         $this->extractor = new Driver\Server($mysqlCredentials);
-        $this->extractor->execute();
+        $this->extractor->execute($mysqlCredentials->dbname);
     }
 
     /**
@@ -41,7 +42,7 @@ class Application
      * @throws InvalidPathException when file does not exist or is invalid
      * @return bool
      */
-    public function output($path)
+    public function output($path, $databases = [])
     {
         $fileExists = System::file_exists($path);
 
@@ -49,7 +50,7 @@ class Application
             throw new InvalidPathException($path);
         }
 
-        foreach ($this->extractor->databases() as $database) {
+        foreach ($databases as $database) {
             $filename = $path . DIRECTORY_SEPARATOR . $database->Name . '.json';
             System::file_put_contents($filename, json_encode($database, JSON_PRETTY_PRINT));
         }
@@ -73,5 +74,10 @@ class Application
         }
 
         return $results;
+    }
+
+    public function getDatabases()
+    {
+        return $this->extractor->databases();
     }
 }
